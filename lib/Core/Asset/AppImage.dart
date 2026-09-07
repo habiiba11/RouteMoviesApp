@@ -7,7 +7,7 @@ class AppImage {
   static const  String onboarding5="${Asset}onboarding5.png";
   static const  String onboarding6="${Asset}onboarding6.png";
   static const  String profile1="${Asset}profile1.png";
-  static const  String profile2="${Asset}profile2.png";
+  static const  String profile2="${Asset}porfile2.png";
   static const  String profile3="${Asset}profile3.png";
 
 
