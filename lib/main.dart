@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:routemovie/module/Screens/auth/Forget%20password.dart';
+import 'package:routemovie/module/Screens/auth/Register.dart';
+import 'package:routemovie/module/Screens/auth/Update_Porfile.dart';
 import 'package:routemovie/module/Screens/auth/login.dart';
 
 void main() {
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.roboto().fontFamily
       ),
       debugShowCheckedModeBanner: false,
-      home:Login(),
+      home:UpdatePorfile(),
     );
   }
 }

@@ -22,7 +22,7 @@ class Login extends StatelessWidget {
               child: TextFormField(
                 style: TextStyle(fontSize: 16, color: AppColor.white),
                 decoration: InputDecoration(
-                  fillColor:AppColor.gray,
+                  fillColor: AppColor.gray,
                   filled: true,
                   prefixIcon: Icon(Icons.email, color: AppColor.white),
 
@@ -56,7 +56,8 @@ class Login extends StatelessWidget {
               child: TextFormField(
                 style: TextStyle(fontSize: 16, color: AppColor.white),
                 decoration: InputDecoration(
-                  fillColor:AppColor.gray,
+                  fillColor: AppColor.gray,
+                  filled: true,
                   prefixIcon: Icon(Icons.lock, color: AppColor.white),
                   suffixIcon: Icon(Icons.visibility_off, color: AppColor.white),
                   hintText: "password",
@@ -112,36 +113,30 @@ class Login extends StatelessWidget {
               ),
               child: Text("login "),
             ),
-            SizedBox(height: 16,),
-
-              RichText(
-                text: TextSpan(
-                  text: 'Don’t Have Account ',
-                  style: TextStyle(
-                    color: AppColor.white,
-                    fontSize: 16,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: ' Create One',
-                      style: TextStyle(
-                        color: AppColor.yellow,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             SizedBox(height: 16),
-            Text("----------------OR------------------",
-            style: TextStyle(
-              fontSize: 18,
-              color: AppColor.yellow,
-            ),),
+
+            RichText(
+              text: TextSpan(
+                text: 'Don’t Have Account? ',
+                style: TextStyle(color: AppColor.white, fontSize: 16),
+                children: [
+                  TextSpan(
+                    text: ' Create One',
+                    style: TextStyle(color: AppColor.yellow),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              "----------------OR------------------",
+              style: TextStyle(fontSize: 18, color: AppColor.yellow),
+            ),
             SizedBox(height: 16),
             FilledButton(
               onPressed: () {},
               style: FilledButton.styleFrom(
-              iconAlignment:IconAlignment.start,
+                iconAlignment: IconAlignment.start,
                 padding: EdgeInsets.symmetric(horizontal: 120, vertical: 12),
                 foregroundColor: AppColor.black,
                 backgroundColor: AppColor.yellow,
@@ -152,7 +147,6 @@ class Login extends StatelessWidget {
               ),
               child: Text("Login With Google"),
             ),
-
           ],
         ),
       ),

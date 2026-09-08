@@ -10,24 +10,29 @@ class Forgetpassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Scaffold(
-        backgroundColor:AppColor.black,
-        appBar: AppBar(leading: Icon(Icons.arrow_back,color: AppColor.yellow,),backgroundColor: AppColor.black,
-        title: Center(child: Text("Forget Password",style: TextStyle(
-          fontSize: 18,fontWeight: FontWeight.w400,color: AppColor.yellow
-        ),),
-
-        ),),
-        body:Column(
+        backgroundColor: AppColor.black,
+        appBar: AppBar(
+          leading: Icon(Icons.arrow_back, color: AppColor.yellow),
+          backgroundColor: AppColor.black,
+          centerTitle: true,
+          title: Text(
+            "Forget Password",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w400,
+              color: AppColor.yellow,
+            ),
+          ),
+        ),
+        body: Column(
           children: [
             Image.asset("Asset/AppImage/forget .png"),
-            SizedBox(height: 25,),
+            SizedBox(height: 25),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: TextFormField(
-
                 style: TextStyle(fontSize: 16, color: AppColor.white),
                 decoration: InputDecoration(
-
                   filled: true,
                   fillColor: AppColor.gray,
                   prefixIcon: Icon(Icons.email, color: AppColor.white),
@@ -57,7 +62,7 @@ class Forgetpassword extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 16,),
+            SizedBox(height: 16),
             FilledButton(
               onPressed: () {},
               style: FilledButton.styleFrom(
