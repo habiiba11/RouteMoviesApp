@@ -53,7 +53,9 @@ class OnboardingScreen6 extends StatelessWidget {
                     width: double.infinity,
                     height: 45,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFF5B800),
                         shape: RoundedRectangleBorder(

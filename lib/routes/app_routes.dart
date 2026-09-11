@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../Screens/Onboarding/onboarding_screen1.dart';
-import '../Screens/Onboarding/onboarding_screen2.dart';
-import '../Screens/Onboarding/onboarding_screen3.dart';
-import '../Screens/Onboarding/onboarding_screen4.dart';
-import '../Screens/Onboarding/onboarding_screen5.dart';
-import '../Screens/Onboarding/onboarding_screen6.dart';
-import '../Screens/Splash Screen/splash_screen.dart';
+import '../module/Screens/Onboarding/onboarding_screen1.dart';
+import '../module/Screens/Onboarding/onboarding_screen2.dart';
+import '../module/Screens/Onboarding/onboarding_screen3.dart';
+import '../module/Screens/Onboarding/onboarding_screen4.dart';
+import '../module/Screens/Onboarding/onboarding_screen5.dart';
+import '../module/Screens/Onboarding/onboarding_screen6.dart';
+import '../module/Screens/Splash Screen/splash_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
