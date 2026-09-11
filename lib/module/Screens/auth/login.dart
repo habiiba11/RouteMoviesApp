@@ -54,6 +54,7 @@ class Login extends StatelessWidget {
             SizedBox(height: 16),
             Container(
               child: TextFormField(
+                obscureText: true,
                 style: TextStyle(fontSize: 16, color: AppColor.white),
                 decoration: InputDecoration(
                   fillColor: AppColor.gray,
@@ -128,9 +129,34 @@ class Login extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16),
-            Text(
-              "----------------OR------------------",
-              style: TextStyle(fontSize: 18, color: AppColor.yellow),
+            Row(
+              children: [
+                SizedBox(width: 80,),
+               Container(
+                    height: 2,
+                 width:80,
+                 color: AppColor.yellow,
+                  ),
+
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'OR',
+                    style: TextStyle(
+
+                      color: AppColor.yellow,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                      Container(
+                    height: 2,
+                   width:80,
+                    color: AppColor.yellow,
+                  ),
+
+              ],
             ),
             SizedBox(height: 16),
             FilledButton(

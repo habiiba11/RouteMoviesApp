@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.roboto().fontFamily
       ),
       debugShowCheckedModeBanner: false,
-      home:UpdatePorfile(),
+      home:Login(),
     );
   }
 }
