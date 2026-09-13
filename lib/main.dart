@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:routemovie/module/Screens/auth/Forget%20password.dart';
 import 'package:routemovie/module/Screens/auth/Register.dart';
-import 'package:routemovie/module/Screens/auth/Update_Porfile.dart';
+import 'package:routemovie/module/Screens/auth/UpdateProfile.dart';
 import 'package:routemovie/module/Screens/auth/login.dart';
 
 import 'routes/app_routes.dart';

@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:routemovie/module/Screens/auth/Forget%20password.dart';
+import 'package:routemovie/module/Screens/auth/UpdateProfile.dart';
+
+import '../module/Screens/auth/Register.dart';
+import '../module/Screens/auth/UpdateProfile.dart';
+import '/module/Screens/auth/login.dart';
 import '../module/Screens/Onboarding/onboarding_screen1.dart';
 import '../module/Screens/Onboarding/onboarding_screen2.dart';
 import '../module/Screens/Onboarding/onboarding_screen3.dart';
@@ -15,9 +21,11 @@ class AppRoutes {
   static const String onboarding4 = '/onboarding4';
   static const String onboarding5 = '/onboarding5';
   static const String onboarding6 = '/onboarding6';
+  static const String login = '/login';
+  static const String Regester = '/Register';
+  static const String  ForgetPassword= '/Forget password';
+  static const String updateProfile = '/UpdateProfile';
 
-  // static const String home = '/home';
-  // static const String login = '/login';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -41,7 +49,16 @@ class AppRoutes {
 
       case onboarding6:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen6());
+      case login:
+        return MaterialPageRoute(builder: (_) => const Login());
+      case Regester:
+        return MaterialPageRoute(builder: (_) => const Register());
 
+      case ForgetPassword:
+        return MaterialPageRoute(builder: (_) => const Forgetpassword());
+
+      case updateProfile:
+        return MaterialPageRoute(builder: (_) => const UpdateProfile());
       default:
         return MaterialPageRoute(
           builder: (_) =>
@@ -50,3 +67,6 @@ class AppRoutes {
     }
   }
 }
+
+
+

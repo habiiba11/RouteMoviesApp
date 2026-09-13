@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:routemovie/Core/Asset/AppImage.dart';
 import 'package:routemovie/Core/Asset/Theme/AppColor.dart';
 
-class UpdatePorfile extends StatelessWidget {
-  const UpdatePorfile({super.key});
+class UpdateProfile extends StatelessWidget {
+  const UpdateProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +127,9 @@ class UpdatePorfile extends StatelessWidget {
             ),
             SizedBox(height: 310,),
             FilledButton(
-              onPressed: () {},
+              onPressed: () {
+
+              },
               style: FilledButton.styleFrom(
                 padding: EdgeInsetsGeometry.symmetric(
                   vertical: 15,
