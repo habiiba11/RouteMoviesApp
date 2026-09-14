@@ -1,15 +1,14 @@
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:routemovie/Core/Asset/AppImage.dart';
 import 'package:routemovie/Core/Asset/Theme/AppColor.dart';
 
-class UpdateProfile extends StatelessWidget {
-  const UpdateProfile({super.key});
+class UpdatePorfile extends StatelessWidget {
+  const UpdatePorfile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Scaffold(
+    return  Scaffold(
         backgroundColor: AppColor.black,
         appBar: AppBar(
           backgroundColor: AppColor.black,
@@ -127,9 +126,7 @@ class UpdateProfile extends StatelessWidget {
             ),
             SizedBox(height: 310,),
             FilledButton(
-              onPressed: () {
-
-              },
+              onPressed: () {},
               style: FilledButton.styleFrom(
                 padding: EdgeInsetsGeometry.symmetric(
                   vertical: 15,
@@ -174,7 +171,7 @@ class UpdateProfile extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+      );
+
   }
 }
