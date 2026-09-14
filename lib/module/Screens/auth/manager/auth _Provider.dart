@@ -9,14 +9,14 @@ class AuthProvider extends ChangeNotifier {
   TextEditingController passwordController = TextEditingController();
 
   Future<void> createAccount() async {
-  try{ var user = await service.createAccount(
-      name: nameController.text,
-      password: passwordController.text,
-      email: emailController.text,
-
-    );}
-  catch(e){
-    print(e);
-  }
+    try {
+      var user = await service.createAccount(
+        name: nameController.text,
+        password: passwordController.text,
+        email: emailController.text,
+      );
+    } catch (e) {
+      print(e);
+    }
   }
 }

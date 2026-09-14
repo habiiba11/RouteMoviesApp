@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
- class FirebaseService {
+class FirebaseService {
   Future<UserCredential?> createAccount({
     required String name,
     required String password,
@@ -16,7 +16,10 @@ import 'package:firebase_auth/firebase_auth.dart';
         throw 'The password provided is too weak.';
       } else if (e.code == 'email-already-in-use') {
         throw 'The account already exists for that email.';
+      }else{
+        throw e.message??"";
       }
+
     } catch (e) {
       rethrow;
     }

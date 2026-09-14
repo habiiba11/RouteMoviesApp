@@ -7,33 +7,32 @@ import 'package:routemovie/Core/Asset/Theme/AppColor.dart';
 import 'package:routemovie/module/Screens/auth/manager/auth%20_Provider.dart';
 
 class Register extends StatelessWidget {
-Register({super.key});
-GlobalKey<FormState>formkey=GlobalKey();
+  Register({super.key});
+  GlobalKey<FormState> formkey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context)=>AuthProvider(),
+      create: (context) => AuthProvider(),
       child: Scaffold(
         backgroundColor: AppColor.black,
         appBar: AppBar(
           backgroundColor: AppColor.black,
           centerTitle: true,
           leading: Icon(Icons.arrow_back, color: AppColor.yellow),
-          title:  Text(
-              "Register",
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                color: AppColor.yellow,
-                fontSize: 20,
-              ),
+          title: Text(
+            "Register",
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              color: AppColor.yellow,
+              fontSize: 20,
             ),
-
+          ),
         ),
 
         body: Consumer<AuthProvider>(
-          builder: (BuildContext context,  Provider, child) {
+          builder: (BuildContext context, Provider, child) {
             return Form(
-              key:formkey ,
+              key: formkey,
               child: Column(
                 children: [
                   Row(
@@ -44,15 +43,27 @@ GlobalKey<FormState>formkey=GlobalKey();
                           horizontal: 5,
                         ),
                       ),
-                      CircleAvatar(radius: 50, child: Image.asset(AppImage.profile2)),
+                      CircleAvatar(
+                        radius: 50,
+                        child: Image.asset(AppImage.profile2),
+                      ),
                       SizedBox(width: 20),
-                      CircleAvatar(radius: 75, child: Image.asset(AppImage.profile3)),
+                      CircleAvatar(
+                        radius: 75,
+                        child: Image.asset(AppImage.profile3),
+                      ),
                       SizedBox(width: 20),
-                      CircleAvatar(radius: 50, child: Image.asset(AppImage.profile1)),
+                      CircleAvatar(
+                        radius: 50,
+                        child: Image.asset(AppImage.profile1),
+                      ),
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsetsGeometry.symmetric(horizontal: 25, vertical: 5),
+                    padding: EdgeInsetsGeometry.symmetric(
+                      horizontal: 25,
+                      vertical: 5,
+                    ),
                   ),
                   Center(
                     child: Text(
@@ -69,8 +80,8 @@ GlobalKey<FormState>formkey=GlobalKey();
                     child: Container(
                       child: TextFormField(
                         controller: Provider.nameController,
-                        validator: (value){
-                          if (value ==null || value .trim().isEmpty){
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
                             return 'Enter Name';
                           }
                         },
@@ -119,17 +130,18 @@ GlobalKey<FormState>formkey=GlobalKey();
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       child: TextFormField(
-                        validator: (value){
+                        controller: Provider.emailController,
+                        validator: (value) {
                           final bool emailvalid = RegExp(
                             r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-                          ).hasMatch(value??"");
-                          if(value==null|| value.trim().isEmpty) {
+                          ).hasMatch(value ?? "");
+                          if (value == null || value.trim().isEmpty) {
                             return 'Enter Email';
                           } else if (!emailvalid) {
                             return 'Enter a Valid Email';
+                          } else {
+                            return null;
                           }
-                          else{
-                            return null;}
                         },
                         style: TextStyle(fontSize: 16, color: AppColor.white),
                         decoration: InputDecoration(
@@ -167,14 +179,13 @@ GlobalKey<FormState>formkey=GlobalKey();
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       child: TextFormField(
-                        validator: (value){
-                          if (value==null||value.isEmpty){
-                            return'Enter Password';
-                          }
-                          else if (value.length<6){
+                        controller: Provider.passwordController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Enter Password';
+                          } else if (value.length < 6) {
                             return 'Enter more than Char Or Numbers';
-                          }
-                          else{
+                          } else {
                             return null;
                           }
                         },
@@ -183,7 +194,10 @@ GlobalKey<FormState>formkey=GlobalKey();
                           fillColor: AppColor.gray,
                           filled: true,
                           prefixIcon: Icon(Icons.lock, color: AppColor.white),
-                          suffixIcon: Icon(Icons.visibility_off, color: AppColor.white),
+                          suffixIcon: Icon(
+                            Icons.visibility_off,
+                            color: AppColor.white,
+                          ),
                           hintText: "Password",
                           hintStyle: TextStyle(color: AppColor.white),
                           focusedBorder: OutlineInputBorder(
@@ -214,12 +228,20 @@ GlobalKey<FormState>formkey=GlobalKey();
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       child: TextFormField(
+                        validator: (value) {
+                          if (value != Provider.passwordController.text) {
+                            return 'Password not matched';
+                          }
+                        },
                         style: TextStyle(fontSize: 16, color: AppColor.white),
                         decoration: InputDecoration(
                           fillColor: AppColor.gray,
                           filled: true,
                           prefixIcon: Icon(Icons.lock, color: AppColor.white),
-                          suffixIcon: Icon(Icons.visibility_off, color: AppColor.white),
+                          suffixIcon: Icon(
+                            Icons.visibility_off,
+                            color: AppColor.white,
+                          ),
                           hintText: "Confirm Password",
                           hintStyle: TextStyle(color: AppColor.white),
                           focusedBorder: OutlineInputBorder(
@@ -250,6 +272,13 @@ GlobalKey<FormState>formkey=GlobalKey();
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.trim().isEmpty) {
+                            return 'Enter a Number ';
+                          } else if (value != 11) {
+                            return 'Enter a valid number';
+                          }
+                        },
                         style: TextStyle(fontSize: 16, color: AppColor.white),
                         decoration: InputDecoration(
                           fillColor: AppColor.gray,
@@ -284,32 +313,55 @@ GlobalKey<FormState>formkey=GlobalKey();
                   ),
                   SizedBox(height: 12),
                   FilledButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (formkey.currentState!.validate()){
+                        Provider.createAccount();
+                      }
+                    },
                     style: FilledButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 130, vertical: 15),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 130,
+                        vertical: 15,
+                      ),
                       foregroundColor: AppColor.black,
                       backgroundColor: AppColor.yellow,
-                      textStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
+                      textStyle: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ),
                     child: Text("Create Account "),
+
                   ),
                   SizedBox(height: 16),
-                 Row(
-                   mainAxisAlignment: MainAxisAlignment.center,
-                   children: [
-                     Text("Already Have Account ? ",style: TextStyle(color: AppColor.white,fontSize: 14,fontWeight: FontWeight.w400),),
-                    Text("Login",style: TextStyle(color: AppColor.yellow,fontSize: 14,fontWeight: FontWeight.w400),),
-                   ],
-                 )
-
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Already Have Account ? ",
+                        style: TextStyle(
+                          color: AppColor.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Text(
+                        "Login",
+                        style: TextStyle(
+                          color: AppColor.yellow,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             );
           },
-
         ),
       ),
     );
