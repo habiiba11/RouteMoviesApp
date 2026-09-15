@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:routemovie/Core/Asset/AppLogo.dart';
+import 'package:routemovie/routes/app_routes.dart';
 
 import '../../../Core/Asset/Theme/AppColor.dart';
 import 'manager/auth _Provider.dart';
@@ -119,12 +120,17 @@ class Login extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      "Forget Password ?",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: AppColor.yellow,
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushReplacementNamed(context, AppRoutes.forgetPassword);
+                      },
+                      child: Text(
+                        "Forget Password ?",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: AppColor.yellow,
+                        ),
                       ),
                     ),
                   ],
@@ -156,12 +162,17 @@ class Login extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Text(
-                      " Create One",
-                      style: TextStyle(
-                        color: AppColor.yellow,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushReplacementNamed(context, AppRoutes.register);
+                      },
+                      child: Text(
+                        " Create One",
+                        style: TextStyle(
+                          color: AppColor.yellow,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ],

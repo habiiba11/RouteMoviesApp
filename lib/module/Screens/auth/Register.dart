@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:routemovie/Core/Asset/AppImage.dart';
 import 'package:routemovie/Core/Asset/Theme/AppColor.dart';
 import 'package:routemovie/module/Screens/auth/manager/auth%20_Provider.dart';
+import 'package:routemovie/routes/app_routes.dart';
 
 
 
@@ -20,7 +21,10 @@ class Register extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: AppColor.black,
           centerTitle: true,
-          leading: Icon(Icons.arrow_back, color: AppColor.yellow),
+          leading: InkWell(onTap: () {
+            Navigator.pushReplacementNamed(context, AppRoutes.login);
+          },
+              child: Icon(Icons.arrow_back, color: AppColor.yellow)),
           title: Text(
             "Register",
             style: TextStyle(
@@ -301,7 +305,9 @@ class Register extends StatelessWidget {
                   ),
                   SizedBox(height: 12),
                   FilledButton(
-                    onPressed: () {},
+                    onPressed: () {
+                    },
+
                     style: FilledButton.styleFrom(
                       padding: EdgeInsets.symmetric(
                         horizontal: 130,
@@ -317,7 +323,10 @@ class Register extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ),
-                    child: Text("Create Account "),
+                    child:
+                    InkWell(onTap: () {
+                    },
+                    child: Text("Create Account ")),
                   ),
                   SizedBox(height: 16),
                   Row(
@@ -331,12 +340,17 @@ class Register extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      Text(
-                        "Login",
-                        style: TextStyle(
-                          color: AppColor.yellow,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushReplacementNamed(context, AppRoutes.login);
+                        },
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            color: AppColor.yellow,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                     ],
