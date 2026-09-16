@@ -67,7 +67,7 @@ class OnboardingScreen6 extends StatelessWidget {
                         onTap: () {
                           Navigator.pushReplacementNamed(context, AppRoutes.login);
                         },
-                        child: const Text(
+                        child:  Text(
                           'Finish',
                           style: TextStyle(
                             color: Colors.black,

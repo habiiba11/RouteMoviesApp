@@ -7,11 +7,22 @@ import 'package:routemovie/Core/Asset/Theme/AppColor.dart';
 import 'package:routemovie/module/Screens/auth/manager/auth%20_Provider.dart';
 import 'package:routemovie/routes/app_routes.dart';
 
-
-
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
   Register({super.key});
+
+  @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
   GlobalKey<FormState> formkey = GlobalKey();
+  bool isSelected = false;
+  // class Register extends StatefulWidget {
+  //   Register({super.key});
+  // State<Register> createState() => createState();
+  //   GlobalKey<FormState> formkey = GlobalKey();
+  //   bool isSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -21,10 +32,12 @@ class Register extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: AppColor.black,
           centerTitle: true,
-          leading: InkWell(onTap: () {
-            Navigator.pushReplacementNamed(context, AppRoutes.login);
-          },
-              child: Icon(Icons.arrow_back, color: AppColor.yellow)),
+          leading: InkWell(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, AppRoutes.login);
+            },
+            child: Icon(Icons.arrow_back, color: AppColor.yellow),
+          ),
           title: Text(
             "Register",
             style: TextStyle(
@@ -91,6 +104,9 @@ class Register extends StatelessWidget {
                             return 'Enter Name';
                           }
                         },
+                        onTapOutside: (event) {
+                          FocusManager.instance.primaryFocus!.unfocus();
+                        },
                         style: TextStyle(fontSize: 16, color: AppColor.white),
                         decoration: InputDecoration(
                           fillColor: AppColor.gray,
@@ -136,6 +152,7 @@ class Register extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       child: TextFormField(
+                        controller: Provider.emailController,
                         validator: (value) {
                           final bool emailvalid = RegExp(
                             r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
@@ -147,6 +164,9 @@ class Register extends StatelessWidget {
                           } else {
                             return null;
                           }
+                        },
+                        onTapOutside: (event) {
+                          FocusManager.instance.primaryFocus!.unfocus();
                         },
                         style: TextStyle(fontSize: 16, color: AppColor.white),
                         decoration: InputDecoration(
@@ -192,6 +212,9 @@ class Register extends StatelessWidget {
                           } else {
                             return null;
                           }
+                        },
+                        onTapOutside: (event) {
+                          FocusManager.instance.primaryFocus!.unfocus();
                         },
                         style: TextStyle(fontSize: 16, color: AppColor.white),
                         decoration: InputDecoration(
@@ -305,8 +328,7 @@ class Register extends StatelessWidget {
                   ),
                   SizedBox(height: 12),
                   FilledButton(
-                    onPressed: () {
-                    },
+                    onPressed: () {},
 
                     style: FilledButton.styleFrom(
                       padding: EdgeInsets.symmetric(
@@ -323,10 +345,10 @@ class Register extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ),
-                    child:
-                    InkWell(onTap: () {
-                    },
-                    child: Text("Create Account ")),
+                    child: InkWell(
+                      onTap: () {},
+                      child: Text("Create Account "),
+                    ),
                   ),
                   SizedBox(height: 16),
                   Row(
@@ -342,7 +364,10 @@ class Register extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pushReplacementNamed(context, AppRoutes.login);
+                          Navigator.pushReplacementNamed(
+                            context,
+                            AppRoutes.login,
+                          );
                         },
                         child: Text(
                           "Login",
@@ -355,6 +380,78 @@ class Register extends StatelessWidget {
                       ),
                     ],
                   ),
+
+                  Padding(
+                    padding: EdgeInsetsGeometry.symmetric(
+                      vertical: 30,
+                      horizontal: 150,
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColor.yellow),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isSelected = false;
+                              });
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: !isSelected
+                                      ? AppColor.yellow
+                                      : Colors.transparent,
+                                  width: 3,
+                                ),
+                              ),
+                              child: ClipOval(
+                                child: SvgPicture.asset(
+                                  "Asset/Svg/LR.svg",
+
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(width: 29),
+
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isSelected = true;
+                              });
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: isSelected
+                                      ? AppColor.yellow
+                                      : Colors.transparent,
+                                  width: 3,
+                                ),
+                              ),
+                              child: ClipOval(
+                                child: SvgPicture.asset(
+                                  "Asset/Svg/EG.svg",
+
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             );
@@ -364,8 +461,3 @@ class Register extends StatelessWidget {
     );
   }
 }
-
-
-
-
-

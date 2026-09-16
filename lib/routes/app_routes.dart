@@ -22,7 +22,7 @@ class AppRoutes {
   static const String login = '/login';
   static const String register = '/Register';
   static const String updateProfile= '/Update_Porfile';
-  static const String forgetPassword = '/onboarding6';
+  static const String forgetPassword = '/Forget password';
 
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
