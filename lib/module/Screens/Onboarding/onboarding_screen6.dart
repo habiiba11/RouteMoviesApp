@@ -63,10 +63,11 @@ class OnboardingScreen6 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                       ),
-                      child: InkWell(onTap: () {
-                        Navigator.pushReplacementNamed(context, AppRoutes.login);
-                      },
-                        child: const Text(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushReplacementNamed(context, AppRoutes.login);
+                        },
+                        child:  Text(
                           'Finish',
                           style: TextStyle(
                             color: Colors.black,

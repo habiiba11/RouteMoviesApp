@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,9 +9,16 @@ import 'package:routemovie/routes/app_routes.dart';
 import '../../../Core/Asset/Theme/AppColor.dart';
 import 'manager/auth _Provider.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   Login({super.key});
-  GlobalKey<FormState>Formkey=GlobalKey();
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+bool isSelected = false;
+
+class _LoginState extends State<Login> {
+  GlobalKey<FormState> Formkey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,14 +28,13 @@ class Login extends StatelessWidget {
         child: Form(
           key: Formkey,
           child: ChangeNotifierProvider(
-            create:(context) => AuthProvider(),
+            create: (context) => AuthProvider(),
             child: Column(
               children: [
                 SafeArea(child: Center(child: Image.asset(Applogo.logo))),
                 SizedBox(height: 60),
                 Container(
                   child: TextFormField(
-
                     validator: (value) {
                       final bool emailvalid = RegExp(
                         r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
@@ -39,6 +46,9 @@ class Login extends StatelessWidget {
                       } else {
                         return null;
                       }
+                    },
+                    onTapOutside: (event) {
+                      FocusManager.instance.primaryFocus!.unfocus();
                     },
                     style: TextStyle(fontSize: 16, color: AppColor.white),
                     decoration: InputDecoration(
@@ -74,7 +84,6 @@ class Login extends StatelessWidget {
                 SizedBox(height: 16),
                 Container(
                   child: TextFormField(
-
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Enter Password';
@@ -84,13 +93,19 @@ class Login extends StatelessWidget {
                         return null;
                       }
                     },
+                    onTapOutside: (event) {
+                      FocusManager.instance.primaryFocus!.unfocus();
+                    },
                     obscureText: true,
                     style: TextStyle(fontSize: 16, color: AppColor.white),
                     decoration: InputDecoration(
                       fillColor: AppColor.gray,
                       filled: true,
                       prefixIcon: Icon(Icons.lock, color: AppColor.white),
-                      suffixIcon: Icon(Icons.visibility_off, color: AppColor.white),
+                      suffixIcon: Icon(
+                        Icons.visibility_off,
+                        color: AppColor.white,
+                      ),
                       hintText: "password",
                       hintStyle: TextStyle(color: AppColor.white),
                       focusedBorder: OutlineInputBorder(
@@ -120,9 +135,13 @@ class Login extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    InkWell(onTap: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.forgetPassword);
-                    },
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.forgetPassword,
+                        );
+                      },
                       child: Text(
                         "Forget Password ?",
                         style: TextStyle(
@@ -138,10 +157,16 @@ class Login extends StatelessWidget {
                 FilledButton(
                   onPressed: () {},
                   style: FilledButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 170, vertical: 15),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 170,
+                      vertical: 15,
+                    ),
                     foregroundColor: AppColor.black,
                     backgroundColor: AppColor.yellow,
-                    textStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
+                    textStyle: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
@@ -161,9 +186,13 @@ class Login extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    InkWell(onTap: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.register);
-                    },
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.register,
+                        );
+                      },
                       child: Text(
                         " Create One",
                         style: TextStyle(
@@ -178,47 +207,124 @@ class Login extends StatelessWidget {
                 SizedBox(height: 16),
                 Row(
                   children: [
-                    SizedBox(width: 80,),
-                    Container(
-                      height: 2,
-                      width:80,
-                      color: AppColor.yellow,
-                    ),
+                    SizedBox(width: 80),
+                    Container(height: 2, width: 80, color: AppColor.yellow),
 
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         'OR',
                         style: TextStyle(
-
                           color: AppColor.yellow,
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
-                    Container(
-                      height: 2,
-                      width:80,
-                      color: AppColor.yellow,
-                    ),
-
+                    Container(height: 2, width: 80, color: AppColor.yellow),
                   ],
                 ),
                 SizedBox(height: 16),
-                FilledButton(
-                  onPressed: () {},
-                  style: FilledButton.styleFrom(
-                    iconAlignment: IconAlignment.start,
-                    padding: EdgeInsets.symmetric(horizontal: 120, vertical: 12),
-                    foregroundColor: AppColor.black,
-                    backgroundColor: AppColor.yellow,
-                    textStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+
+                FilledButton.icon(
+                  onPressed: () async {
+                   // await FirebaseService.signInWithGoogle;
+                  },
+                  icon: SvgPicture.asset("Asset/Svg/google_.svg"),
+                  label: Text(
+                    "Login With Google",
+                    style: TextStyle(
+                      color: AppColor.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
-                  child: Text("Login With Google"),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(AppColor.yellow),
+                    padding: WidgetStatePropertyAll(
+                      EdgeInsetsGeometry.symmetric(
+                        horizontal: 110,
+                        vertical: 15,
+                      ),
+                    ),
+                    shape: WidgetStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadiusGeometry.circular(16),
+                      ),
+                    ),
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsetsGeometry.symmetric(
+                    vertical: 30,
+                    horizontal: 150,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColor.yellow),
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isSelected = false;
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: !isSelected
+                                    ? AppColor.yellow
+                                    : Colors.transparent,
+                                width: 3,
+                              ),
+                            ),
+                            child: ClipOval(
+                              child: SvgPicture.asset(
+                                "Asset/Svg/LR.svg",
+
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(width: 29),
+
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isSelected = true;
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: isSelected
+                                    ? AppColor.yellow
+                                    : Colors.transparent,
+                                width: 3,
+                              ),
+                            ),
+                            child: ClipOval(
+                              child: SvgPicture.asset(
+                                "Asset/Svg/EG.svg",
+
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
