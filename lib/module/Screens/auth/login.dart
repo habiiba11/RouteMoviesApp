@@ -171,7 +171,10 @@ class _LoginState extends State<Login> {
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
-                  child: Text("login "),
+                  child: InkWell(onTap: () {
+                    Navigator.pushReplacementNamed(context, AppRoutes.movieDetails);
+                  },
+                      child: Text("login ")),
                 ),
                 SizedBox(height: 16),
 

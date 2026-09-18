@@ -1,5 +1,5 @@
 class AppImage {
-  static const  String Asset="Asset/AppImage/";
+  static const  String Asset="Assets/AppImage/";
   static const  String onboarding1="${Asset}onboarding.png";
   static const  String onboarding2="${Asset}onboarding2.png";
   static const  String onboarding3="${Asset}onboarding3.png";

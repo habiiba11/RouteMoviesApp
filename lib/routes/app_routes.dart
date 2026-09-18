@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:routemovie/module/Screens/Home/Movie/Movie_Details.dart';
 import 'package:routemovie/module/Screens/auth/Forget%20password.dart';
 import 'package:routemovie/module/Screens/auth/Register.dart';
 import 'package:routemovie/module/Screens/auth/Update_Porfile.dart';
@@ -23,6 +24,8 @@ class AppRoutes {
   static const String register = '/Register';
   static const String updateProfile= '/Update_Porfile';
   static const String forgetPassword = '/Forget password';
+  static const String movieDetails = '/Movie_Details';
+
 
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -55,6 +58,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => Forgetpassword());
         case updateProfile:
         return MaterialPageRoute(builder: (_) => const UpdatePorfile());
+        case movieDetails:
+        return MaterialPageRoute(builder: (_) => const MovieDetails());
 
       default:
         return MaterialPageRoute(
