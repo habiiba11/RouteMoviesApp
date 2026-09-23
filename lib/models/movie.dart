@@ -1,9 +1,10 @@
 class Movie {
   final String title;
+  final String posterUrl;
   final String rating;
   final String image;
 
-  Movie({required this.title, required this.rating, required this.image});
+  Movie({required this.title, required this.rating, required this.image, required this.posterUrl});
 
   factory Movie.fromMap(Map<String, String> map) {
     return Movie(
