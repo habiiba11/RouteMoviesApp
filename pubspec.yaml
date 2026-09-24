@@ -41,6 +41,10 @@ dependencies:
   firebase_core:
   firebase_auth:
   provider: ^6.1.5+1
+
+  flutter_bloc: ^8.1.6
+  http: ^1.2.2
+  shared_preferences: ^2.3.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -68,6 +72,7 @@ flutter:
     - Asset/AppImage/
     - Asset/AppLogo/
     - Asset/Svg/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -112,5 +112,6 @@ class OnboardingScreen4 extends StatelessWidget {
         ],
       ),
     );
+    return const OnboardingScreen6();
   }
 }

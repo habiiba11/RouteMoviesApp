@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'onboarding_screen6.dart';
 
 class OnboardingScreen3 extends StatelessWidget {
   const OnboardingScreen3({super.key});
@@ -8,7 +9,7 @@ class OnboardingScreen3 extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-        
+
           Positioned.fill(
             child: Image.asset(
               'Assets/AppImage/onboarding3.jpg',
@@ -16,7 +17,7 @@ class OnboardingScreen3 extends StatelessWidget {
             ),
           ),
 
-      
+
           Positioned.fill(
             child: Container(
               decoration: const BoxDecoration(
@@ -34,7 +35,7 @@ class OnboardingScreen3 extends StatelessWidget {
             ),
           ),
 
-          
+
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -128,7 +129,7 @@ class OnboardingScreen3 extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
+
                 ],
               ),
             ),
@@ -136,5 +137,6 @@ class OnboardingScreen3 extends StatelessWidget {
         ],
       ),
     );
+    return const OnboardingScreen6();
   }
 }

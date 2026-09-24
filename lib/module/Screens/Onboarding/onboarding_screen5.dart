@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'onboarding_screen6.dart';
 
 class OnboardingScreen5 extends StatelessWidget {
   const OnboardingScreen5({super.key});
@@ -116,5 +117,6 @@ class OnboardingScreen5 extends StatelessWidget {
         ],
       ),
     );
+    return const OnboardingScreen6();
   }
 }

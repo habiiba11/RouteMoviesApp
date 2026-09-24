@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'onboarding_screen6.dart';
 
 import 'onboarding_screen2.dart';
 
@@ -10,7 +11,7 @@ class OnboardingScreen1 extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // الصورة تاخد المساحة كلها
+
           Positioned.fill(
             child: Image.asset(
               'Assets/AppImage/onboarding.png',
@@ -100,5 +101,6 @@ class OnboardingScreen1 extends StatelessWidget {
         ],
       ),
     );
+    return const OnboardingScreen6();
   }
 }
