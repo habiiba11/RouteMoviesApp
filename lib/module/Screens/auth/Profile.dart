@@ -233,7 +233,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const Icon(Icons.star, color: Color(0xFFF5B800), size: 10),
                     const SizedBox(width: 2),
                     Text(
-                      movie.rating,
+                      movie.rating.toString(),
                       style: const TextStyle(color: Colors.white, fontSize: 10),
                     ),
                   ],

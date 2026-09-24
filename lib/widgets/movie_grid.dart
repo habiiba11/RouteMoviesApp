@@ -27,7 +27,7 @@ class MovieGrid extends StatelessWidget {
             child: Image.network(
               movie.posterUrl,
               fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => Container(
+              errorBuilder: (context, error, stackTrace) => Container(
                 color: Colors.grey.shade800,
                 child: const Icon(Icons.movie, color: Colors.white38),
               ),
