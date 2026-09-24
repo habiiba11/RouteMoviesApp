@@ -9,6 +9,9 @@ class AppImage {
   static const  String profile1="${Asset}profile1.png";
   static const  String profile2="${Asset}porfile2.png";
   static const  String profile3="${Asset}profile3.png";
+  static const  String movieDetails1="${Asset}movie details1.png";
+  static const  String movieDetails2="${Asset}movie details2.png";
+  static const  String movieDetails3="${Asset}movie details3.png";
 
 
 

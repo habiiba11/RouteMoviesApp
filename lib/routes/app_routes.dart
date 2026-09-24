@@ -3,6 +3,7 @@ import 'package:routemovie/module/Screens/auth/Forget%20password.dart';
 import 'package:routemovie/module/Screens/auth/Register.dart';
 import 'package:routemovie/module/Screens/auth/Update_Porfile.dart';
 import 'package:routemovie/module/Screens/auth/login.dart';
+import 'package:routemovie/module/Screens/movie/home/Movie_Details.dart';
 import '../module/Screens/Onboarding/onboarding_screen1.dart';
 import '../module/Screens/Onboarding/onboarding_screen2.dart';
 import '../module/Screens/Onboarding/onboarding_screen3.dart';
@@ -23,6 +24,7 @@ class AppRoutes {
   static const String register = '/Register';
   static const String updateProfile= '/Update_Porfile';
   static const String forgetPassword = '/Forget password';
+  static const String  Movie_details = '/Movie_Details';
 
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -55,6 +57,11 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => Forgetpassword());
         case updateProfile:
         return MaterialPageRoute(builder: (_) => const UpdatePorfile());
+        case Movie_details:
+        return MaterialPageRoute(builder: (_) => const MovieDetails());
+
+
+
 
       default:
         return MaterialPageRoute(
@@ -63,4 +70,5 @@ class AppRoutes {
         );
     }
   }
+
 }

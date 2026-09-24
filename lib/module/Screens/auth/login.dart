@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,6 +6,7 @@ import 'package:routemovie/Core/Asset/AppLogo.dart';
 import 'package:routemovie/routes/app_routes.dart';
 
 import '../../../Core/Asset/Theme/AppColor.dart';
+import 'Services/firebase_service.dart';
 import 'manager/auth _Provider.dart';
 
 class Login extends StatefulWidget {
@@ -139,7 +139,7 @@ class _LoginState extends State<Login> {
                       onTap: () {
                         Navigator.pushReplacementNamed(
                           context,
-                          AppRoutes.forgetPassword,
+                          AppRoutes.Movie_details,
                         );
                       },
                       child: Text(
@@ -228,7 +228,7 @@ class _LoginState extends State<Login> {
 
                 FilledButton.icon(
                   onPressed: () async {
-                   // await FirebaseService.signInWithGoogle;
+                    await FirebaseService.signInWithGoogle();
                   },
                   icon: SvgPicture.asset("Asset/Svg/google_.svg"),
                   label: Text(
