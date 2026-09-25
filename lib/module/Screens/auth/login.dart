@@ -139,7 +139,7 @@ class _LoginState extends State<Login> {
                       onTap: () {
                         Navigator.pushReplacementNamed(
                           context,
-                          AppRoutes.Movie_details,
+                          AppRoutes.updateProfile,
                         );
                       },
                       child: Text(
