@@ -172,7 +172,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   }
                   // Initial idle state
                   return Center(
-                    child:
+
                   );
                 },
               ),

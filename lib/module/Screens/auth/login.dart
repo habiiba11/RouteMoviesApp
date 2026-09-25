@@ -27,7 +27,6 @@ class Login extends StatelessWidget {
                 SizedBox(height: 60),
                 Container(
                   child: TextFormField(
-
                     validator: (value) {
                       final bool emailvalid = RegExp(
                         r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
@@ -39,6 +38,9 @@ class Login extends StatelessWidget {
                       } else {
                         return null;
                       }
+                    },
+                    onTapOutside: (event) {
+                      FocusManager.instance.primaryFocus!.unfocus();
                     },
                     style: TextStyle(fontSize: 16, color: AppColor.white),
                     decoration: InputDecoration(
@@ -120,9 +122,14 @@ class Login extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    InkWell(onTap: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.forgetPassword);
-                    },
+
+                     InkWell(
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.forgetPassword,
+                        );
+                      },
                       child: Text(
                         "Forget Password ?",
                         style: TextStyle(
