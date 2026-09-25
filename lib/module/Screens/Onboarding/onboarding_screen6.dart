@@ -55,10 +55,7 @@ class OnboardingScreen6 extends StatelessWidget {
                     height: 45,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
-                          context,
-                          AppRoutes.login,
-                        );
+
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFF5B800),
@@ -66,12 +63,16 @@ class OnboardingScreen6 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                       ),
-                      child: Text(
-                        'Finish',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                      child: InkWell(onTap: () {
+                        Navigator.pushReplacementNamed(context, AppRoutes.login);
+                      },
+                        child: const Text(
+                          'Finish',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
