@@ -23,6 +23,7 @@ class AppRoutes {
   static const String login = '/login';
   static const String register = '/Register';
   static const String updateProfile= '/Update_Porfile';
+  static const String updateProfile2= '/Update_Profile2';
   static const String forgetPassword = '/Forget password';
   static const String  Movie_details = '/Movie_Details';
 
@@ -56,7 +57,7 @@ class AppRoutes {
         case forgetPassword:
         return MaterialPageRoute(builder: (_) => Forgetpassword());
         case updateProfile:
-        return MaterialPageRoute(builder: (_) => const UpdatePorfile());
+        return MaterialPageRoute(builder: (_) => const UpdateProfileScreen());
         case Movie_details:
         return MaterialPageRoute(builder: (_) => const MovieDetails());
 
