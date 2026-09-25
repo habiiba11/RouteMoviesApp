@@ -4,12 +4,12 @@ import 'package:routemovie/module/Screens/auth/Forget%20password.dart';
 import 'package:routemovie/module/Screens/auth/Register.dart';
 import 'package:routemovie/module/Screens/auth/Update_Porfile.dart';
 import 'package:routemovie/module/Screens/auth/login.dart';
-import '../module/Screens/Onboarding/onboarding_screen1.dart';
-import '../module/Screens/Onboarding/onboarding_screen2.dart';
-import '../module/Screens/Onboarding/onboarding_screen3.dart';
-import '../module/Screens/Onboarding/onboarding_screen4.dart';
-import '../module/Screens/Onboarding/onboarding_screen5.dart';
-import '../module/Screens/Onboarding/onboarding_screen6.dart';
+// import '../module/Screens/Onboarding/onboarding_screen1.dart';
+// import '../module/Screens/Onboarding/onboarding_screen2.dart';
+// import '../module/Screens/Onboarding/onboarding_screen3.dart';
+// import '../module/Screens/Onboarding/onboarding_screen4.dart';
+// import '../module/Screens/Onboarding/onboarding_screen5.dart';
+// import '../module/Screens/Onboarding/onboarding_screen6.dart';
 import '../module/Screens/Splash Screen/splash_screen.dart';
 
 class AppRoutes {
@@ -35,23 +35,23 @@ class AppRoutes {
       case splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
 
-      case onboarding1:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen1());
-
-      case onboarding2:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen2());
-
-      case onboarding3:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen3());
-
-      case onboarding4:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen4());
-
-      case onboarding5:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen5());
-
-      case onboarding6:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen6());
+      // case onboarding1:
+      //   return MaterialPageRoute(builder: (_) => const OnboardingScreen1());
+      //
+      // case onboarding2:
+      //   return MaterialPageRoute(builder: (_) => const OnboardingScreen2());
+      //
+      // case onboarding3:
+      //   return MaterialPageRoute(builder: (_) => const OnboardingScreen3());
+      //
+      // case onboarding4:
+      //   return MaterialPageRoute(builder: (_) => const OnboardingScreen4());
+      //
+      // case onboarding5:
+      //   return MaterialPageRoute(builder: (_) => const OnboardingScreen5());
+      //
+      // case onboarding6:
+      //   return MaterialPageRoute(builder: (_) => const OnboardingScreen6());
 
       case login:
         return MaterialPageRoute(builder: (_) => Login());
