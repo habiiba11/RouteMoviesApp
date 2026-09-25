@@ -8,130 +8,243 @@ import 'package:routemovie/routes/app_routes.dart';
 import '../../../Core/Asset/Theme/AppColor.dart';
 import 'manager/auth _Provider.dart';
 
-class Login extends StatelessWidget {
-  Login({super.key});
-  GlobalKey<FormState>Formkey=GlobalKey();
+class Login extends StatefulWidget {
+  const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  bool isPasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.black,
 
-      body: Expanded(
+      body: SingleChildScrollView(
         child: Form(
-          key: Formkey,
+          key: formKey,
+
           child: ChangeNotifierProvider(
-            create:(context) => AuthProvider(),
+            create: (context) => AuthProvider(),
+
             child: Column(
               children: [
-                SafeArea(child: Center(child: Image.asset(Applogo.logo))),
+
+                SafeArea(
+                  child: Center(
+                    child: Image.asset(Applogo.logo),
+                  ),
+                ),
+
                 SizedBox(height: 60),
+
+                // Email
                 Container(
                   child: TextFormField(
                     validator: (value) {
+
                       final bool emailvalid = RegExp(
                         r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
                       ).hasMatch(value ?? "");
+
                       if (value == null || value.trim().isEmpty) {
                         return 'Enter Email';
-                      } else if (!emailvalid) {
+                      }
+                      else if (!emailvalid) {
                         return 'Enter a Valid Email';
-                      } else {
+                      }
+                      else {
                         return null;
                       }
                     },
+
                     onTapOutside: (event) {
-                      FocusManager.instance.primaryFocus!.unfocus();
+                      FocusManager.instance.primaryFocus?.unfocus();
                     },
-                    style: TextStyle(fontSize: 16, color: AppColor.white),
+
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColor.white,
+                    ),
+
                     decoration: InputDecoration(
                       fillColor: AppColor.gray,
                       filled: true,
-                      prefixIcon: Icon(Icons.email, color: AppColor.white),
+
+                      prefixIcon: Icon(
+                        Icons.email,
+                        color: AppColor.white,
+                      ),
 
                       hintText: "Email",
-                      hintStyle: TextStyle(color: AppColor.white),
+
+                      hintStyle: TextStyle(
+                        color: AppColor.white,
+                      ),
+
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: AppColor.gray),
+                        borderSide: BorderSide(
+                          color: AppColor.gray,
+                        ),
                       ),
+
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: AppColor.gray),
+                        borderSide: BorderSide(
+                          color: AppColor.gray,
+                        ),
                       ),
+
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: AppColor.gray),
+                        borderSide: BorderSide(
+                          color: AppColor.gray,
+                        ),
                       ),
+
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: AppColor.gray),
+                        borderSide: BorderSide(
+                          color: AppColor.gray,
+                        ),
                       ),
+
                       disabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: AppColor.gray),
+                        borderSide: BorderSide(
+                          color: AppColor.gray,
+                        ),
                       ),
                     ),
                   ),
                 ),
+
                 SizedBox(height: 16),
+
+                // Password
                 Container(
                   child: TextFormField(
 
                     validator: (value) {
+
                       if (value == null || value.isEmpty) {
                         return 'Enter Password';
-                      } else if (value.length < 6) {
+                      }
+                      else if (value.length < 6) {
                         return 'Enter more than Char Or Numbers';
-                      } else {
+                      }
+                      else {
                         return null;
                       }
                     },
-                    obscureText: true,
-                    style: TextStyle(fontSize: 16, color: AppColor.white),
+
+                    // هنا التحكم في إظهار وإخفاء الباسورد
+                    obscureText: !isPasswordVisible,
+
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColor.white,
+                    ),
+
                     decoration: InputDecoration(
+
                       fillColor: AppColor.gray,
                       filled: true,
-                      prefixIcon: Icon(Icons.lock, color: AppColor.white),
-                      suffixIcon: Icon(Icons.visibility_off, color: AppColor.white),
-                      hintText: "password",
-                      hintStyle: TextStyle(color: AppColor.white),
+
+                      prefixIcon: Icon(
+                        Icons.lock,
+                        color: AppColor.white,
+                      ),
+
+                      // زر العين
+                      suffixIcon: IconButton(
+                        onPressed: () {
+
+                          setState(() {
+                            isPasswordVisible =
+                            !isPasswordVisible;
+                          });
+
+                        },
+
+                        icon: Icon(
+                          isPasswordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+
+                          color: AppColor.white,
+                        ),
+                      ),
+
+                      hintText: "Password",
+
+                      hintStyle: TextStyle(
+                        color: AppColor.white,
+                      ),
+
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: AppColor.gray),
+                        borderSide: BorderSide(
+                          color: AppColor.gray,
+                        ),
                       ),
+
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: AppColor.gray),
+                        borderSide: BorderSide(
+                          color: AppColor.gray,
+                        ),
                       ),
+
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: AppColor.gray),
+                        borderSide: BorderSide(
+                          color: AppColor.gray,
+                        ),
                       ),
+
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: AppColor.gray),
+                        borderSide: BorderSide(
+                          color: AppColor.gray,
+                        ),
                       ),
+
                       disabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(color: AppColor.gray),
+                        borderSide: BorderSide(
+                          color: AppColor.gray,
+                        ),
                       ),
                     ),
                   ),
                 ),
+
                 SizedBox(height: 16),
+
+                // Forget Password
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
 
-                     InkWell(
+                    InkWell(
                       onTap: () {
                         Navigator.pushReplacementNamed(
                           context,
                           AppRoutes.forgetPassword,
                         );
                       },
+
                       child: Text(
                         "Forget Password ?",
+
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
@@ -141,38 +254,75 @@ class Login extends StatelessWidget {
                     ),
                   ],
                 ),
+
                 SizedBox(height: 16),
+
+                // Login Button
                 FilledButton(
-                  onPressed: () {},
+                  onPressed: () {
+
+                    if (formKey.currentState!.validate()) {
+
+                      Navigator.pushReplacementNamed(
+                        context,
+                        AppRoutes.home,
+                      );
+
+                    }
+
+                  },
+
                   style: FilledButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 170, vertical: 15),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 170,
+                      vertical: 15,
+                    ),
+
                     foregroundColor: AppColor.black,
+
                     backgroundColor: AppColor.yellow,
-                    textStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
+
+                    textStyle: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
+                    ),
+
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
-                  child: Text("login "),
+
+                  child: Text("login"),
                 ),
+
                 SizedBox(height: 16),
 
+                // Create Account
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+
                     Text(
                       "Don’t Have Account ?  ",
+
                       style: TextStyle(
                         color: AppColor.white,
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    InkWell(onTap: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.register);
-                    },
+
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.register,
+                        );
+                      },
+
                       child: Text(
                         " Create One",
+
                         style: TextStyle(
                           color: AppColor.yellow,
                           fontSize: 14,
@@ -182,49 +332,71 @@ class Login extends StatelessWidget {
                     ),
                   ],
                 ),
+
                 SizedBox(height: 16),
+
+                // OR
                 Row(
                   children: [
-                    SizedBox(width: 80,),
+
+                    SizedBox(width: 80),
+
                     Container(
                       height: 2,
-                      width:80,
+                      width: 80,
                       color: AppColor.yellow,
                     ),
 
                     const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
+
                       child: Text(
                         'OR',
-                        style: TextStyle(
 
+                        style: TextStyle(
                           color: AppColor.yellow,
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
+
                     Container(
                       height: 2,
-                      width:80,
+                      width: 80,
                       color: AppColor.yellow,
                     ),
-
                   ],
                 ),
+
                 SizedBox(height: 16),
+
+                // Google
                 FilledButton(
                   onPressed: () {},
+
                   style: FilledButton.styleFrom(
-                    iconAlignment: IconAlignment.start,
-                    padding: EdgeInsets.symmetric(horizontal: 120, vertical: 12),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 120,
+                      vertical: 12,
+                    ),
+
                     foregroundColor: AppColor.black,
+
                     backgroundColor: AppColor.yellow,
-                    textStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
+
+                    textStyle: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
+                    ),
+
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
+
                   child: Text("Login With Google"),
                 ),
               ],
