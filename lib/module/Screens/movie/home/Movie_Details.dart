@@ -93,85 +93,102 @@ class MovieDetails extends StatelessWidget {
 
                       SizedBox(height: 8),
                       FilledButton(
-                          onPressed: () {},
+                        onPressed: () {},
 
-                          style: FilledButton.styleFrom(
-                            backgroundColor: AppColor.red,
-                               padding: EdgeInsetsGeometry.symmetric(horizontal: 120,vertical: 16),
-
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: AppColor.red,
+                          padding: EdgeInsetsGeometry.symmetric(
+                            horizontal: 120,
+                            vertical: 16,
                           ),
 
-                          child: Text(
-                            "Watch",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 20,
-                              color: AppColor.white,
-                            ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
                           ),
                         ),
+
+                        child: Text(
+                          "Watch",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20,
+                            color: AppColor.white,
+                          ),
+                        ),
+                      ),
 
                       Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 16,
                           vertical: 16,
                         ),
-
                         child: Row(
                           children: [
-                            FilledButton.icon(
-                              onPressed: () {},
-
-                              icon: SvgPicture.asset('Asset/Svg/heart.svg'),
-
-                              style: FilledButton.styleFrom(
-                                backgroundColor: AppColor.gray,
-
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
+                            Expanded(
+                              child: FilledButton.icon(
+                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                  'Asset/Svg/heart.svg',
+                                ),
+                                label: Text(
+                                  "15",
+                                  style: TextStyle(
+                                    color: AppColor.white,
+                                  ),
+                                ),
+                                style: FilledButton.styleFrom(
+                                  backgroundColor: AppColor.gray,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
                                 ),
                               ),
-
-                              label: Text("15"),
                             ),
 
                             SizedBox(width: 16),
 
-                            FilledButton.icon(
-                              onPressed: () {},
-
-                              icon: SvgPicture.asset('Asset/Svg/clock.svg'),
-
-                              style: FilledButton.styleFrom(
-                                backgroundColor: AppColor.gray,
-
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
+                            Expanded(
+                              child: FilledButton.icon(
+                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                  'Asset/Svg/clock.svg',
+                                ),
+                                label: Text(
+                                  "90",
+                                  style: TextStyle(
+                                    color: AppColor.white,
+                                  ),
+                                ),
+                                style: FilledButton.styleFrom(
+                                  backgroundColor: AppColor.gray,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
                                 ),
                               ),
-
-                              label: Text("90"),
                             ),
 
                             SizedBox(width: 16),
 
-                            FilledButton.icon(
-                              onPressed: () {},
-
-                              icon: SvgPicture.asset('Asset/Svg/star.svg'),
-
-                              style: FilledButton.styleFrom(
-                                backgroundColor: AppColor.gray,
-
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
+                            Expanded(
+                              child: FilledButton.icon(
+                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                  'Asset/Svg/star.svg',
+                                ),
+                                label: Text(
+                                  "7.6",
+                                  style: TextStyle(
+                                    color: AppColor.white,
+                                  ),
+                                ),
+                                style: FilledButton.styleFrom(
+                                  backgroundColor: AppColor.gray,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
                                 ),
                               ),
-
-                              label: Text("7.6"),
                             ),
                           ],
                         ),
@@ -188,8 +205,6 @@ class MovieDetails extends StatelessWidget {
 
               child: Column(
                 children: [
-
-
                   Align(
                     alignment: Alignment.centerLeft,
 
@@ -229,7 +244,10 @@ class MovieDetails extends StatelessWidget {
                     alignment: Alignment.centerLeft,
 
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16,vertical: 35),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 35,
+                      ),
 
                       child: Text(
                         "Similar ",
@@ -241,11 +259,425 @@ class MovieDetails extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Row(
+                    children: [
+                      SizedBox(width: 8),
+                      Container(
+                        height: 279,
+                        width: 189,
+                        child: Image.asset(AppImage.film1),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadiusGeometry.circular(16),
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      Container(
+                        height: 279,
+                        width: 189,
+                        child: Image.asset(AppImage.film2),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadiusGeometry.circular(16),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 16),
+                  Row(
+                    children: [
+                      SizedBox(width: 8),
+                      Container(
+                        height: 279,
+                        width: 189,
+                        child: Image.asset(AppImage.film3),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadiusGeometry.circular(16),
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      Container(
+                        height: 279,
+                        width: 189,
+                        child: Image.asset(AppImage.film4),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadiusGeometry.circular(16),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: 16,
+                    ),
+                    child: Align(
+                      alignment: AlignmentGeometry.centerLeft,
+                      child: Text(
+                        "Summary",
+                        style: TextStyle(
+                          color: AppColor.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Following the events of Spider-Man No Way Home, Doctor Strange unwittingly casts a forbidden spell that accidentally opens up the multiverse. With help from Wong and Scarlet Witch, Strange confronts various versions of himself as well as teaming up with the young America Chavez while traveling through various realities and working to restore reality as he knows it. Along the way, Strange and his allies realize they must take on a powerful new adversary who seeks to take over the multiverse.—Blazer346",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                        color: AppColor.white,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16),
                   Container(
+                    padding: EdgeInsetsGeometry.symmetric(
+                      vertical: 20,
+                      horizontal: 16,
+                    ),
+                    alignment: AlignmentGeometry.centerLeft,
+                    child: Text(
+                      "Cast",
+                      style: TextStyle(
+                        color: AppColor.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 92,
+                    width: 398,
+                    decoration: BoxDecoration(
+                      color: AppColor.gray,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(width: 11),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            AppImage.actor1,
+                            height: 70,
+                            width: 70,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
 
-                  )
+                        SizedBox(width: 16),
+
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Name : Hayley Atwell",
+                              style: TextStyle(
+                                color: AppColor.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
+                            ),
+
+                            SizedBox(height: 8),
+
+                            Text(
+                              "Character : Captain Carter",
+                              style: TextStyle(
+                                color: AppColor.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Container(
+                    height: 92,
+                    width: 398,
+                    decoration: BoxDecoration(
+                      color: AppColor.gray,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(width: 11),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            AppImage.actor2,
+                            height: 70,
+                            width: 70,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+
+                        SizedBox(width: 16),
+
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Name : Elizabeth Olsen",
+                              style: TextStyle(
+                                color: AppColor.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
+                            ),
+
+                            SizedBox(height: 8),
+
+                            Text(
+                              "Character : Wanda Maximoff /\n The Scarlet Witch",
+                              style: TextStyle(
+                                color: AppColor.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Container(
+                    height: 92,
+                    width: 398,
+                    decoration: BoxDecoration(
+                      color: AppColor.gray,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(width: 11),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            AppImage.actor3,
+                            height: 70,
+                            width: 70,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+
+                        SizedBox(width: 16),
+
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Name : Rachel McAdams",
+                              style: TextStyle(
+                                color: AppColor.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
+                            ),
+
+                            SizedBox(height: 8),
+
+                            Text(
+                              "Character : Dr. Christine Palmer",
+                              style: TextStyle(
+                                color: AppColor.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Container(
+                    height: 92,
+                    width: 398,
+                    decoration: BoxDecoration(
+                      color: AppColor.gray,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(width: 11),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            AppImage.actor4,
+                            height: 70,
+                            width: 70,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+
+                        SizedBox(width: 16),
+
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Name : Charlize Theron",
+                              style: TextStyle(
+                                color: AppColor.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
+                            ),
+
+                            SizedBox(height: 8),
+
+                            Text(
+                              "Character : Clea",
+                              style: TextStyle(
+                                color: AppColor.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
+            ),
+            SizedBox(height: 16),
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Genres",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: AppColor.white,
+                  ),
+                ),
+
+                SizedBox(height: 16),
+
+                Row(
+                  children: [
+                    Container(
+                      height: 36,
+                      width: 122,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: AppColor.gray,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Text(
+                        "Action",
+                        style: TextStyle(
+                          color: AppColor.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(width: 16),
+
+                    Container(
+                      height: 36,
+                      width: 122,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: AppColor.gray,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Text(
+                        "Sci-Fi",
+                        style: TextStyle(
+                          color: AppColor.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(width: 16),
+
+                    Container(
+                      height: 36,
+                      width: 122,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: AppColor.gray,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Text(
+                        "Adventure",
+                        style: TextStyle(
+                          color: AppColor.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 12),
+
+                Row(
+                  children: [
+                    Container(
+                      height: 36,
+                      width: 122,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: AppColor.gray,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Text(
+                        "Fantasy",
+                        style: TextStyle(
+                          color: AppColor.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(width: 16),
+
+                    Container(
+                      height: 36,
+                      width: 122,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: AppColor.gray,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Text(
+                        "Horror",
+                        style: TextStyle(
+                          color: AppColor.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 57,)
+              ],
             ),
           ],
         ),
