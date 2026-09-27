@@ -101,7 +101,7 @@ class MyApp extends StatelessWidget {
       ),
       ),
           onGenerateRoute: AppRoutes.generateRoute,
-          home: const MainScreen(),
+          initialRoute:AppRoutes.splash ,
         ),
       ),
     );

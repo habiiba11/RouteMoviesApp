@@ -1,175 +1,321 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:routemovie/Core/Asset/AppImage.dart';
-import 'package:routemovie/Core/Asset/Theme/AppColor.dart';
+import 'package:routemovie/routes/app_routes.dart';
 
-class UpdatePorfile extends StatelessWidget {
-  const UpdatePorfile({super.key});
+import '../../../Core/Asset/Theme/AppColor.dart';
+
+class UpdateProfileScreen extends StatefulWidget {
+  const UpdateProfileScreen({super.key});
+
+  @override
+  State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
+}
+
+class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
+  bool showAvatars = false;
+
+  String selectedAvatar = 'Asset/AppImage/profile8.png';
+
+  final List<String> avatars = [
+    'Asset/AppImage/profile1.png',
+    'Asset/AppImage/porfile2.png',
+    'Asset/AppImage/profile8.png',
+    'Asset/AppImage/profile4.png',
+    'Asset/AppImage/profile5.png',
+    'Asset/AppImage/profile6.png',
+    'Asset/AppImage/profile7.png',
+    'Asset/AppImage/profile3.png',
+    'Asset/AppImage/profile9.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Scaffold(
-        backgroundColor: AppColor.black,
-        appBar: AppBar(
-          backgroundColor: AppColor.black,
-          centerTitle:true,
-          leading: Icon(Icons.arrow_back_outlined, color: AppColor.yellow),
-          title:
-             Text(
-              "Pick Avatar",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-                color: AppColor.yellow,
-              ),
-            ),
-
-
-        ),
-        body: Column(
+    return Scaffold(
+      backgroundColor: AppColor.black,
+      body: SafeArea(
+        child: Stack(
           children: [
-            SizedBox(height: 20),
-            Center(
-              child: CircleAvatar(
-                radius: 80,
-                child: Image.asset(AppImage.profile3),
+            SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 25,
+                vertical: 20,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: AppColor.yellow,
+                        ),
+                      ),
+                      const Expanded(
+                        child: Center(
+                          child: Text(
+                            'Update Profile',
+                            style: TextStyle(
+                              color: AppColor.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 48),
+                    ],
+                  ),
+
+                  const SizedBox(height: 30),
+
+                  ClipOval(
+                    child: Image.asset(
+                      selectedAvatar,
+                      width: 135,
+                      height: 135,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+
+                  const SizedBox(height: 30),
+
+                  Container(
+                    width: double.infinity,
+                    height: 55,
+                    decoration: BoxDecoration(
+                      color: AppColor.gray,
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Row(
+                      children: [
+                        SizedBox(width: 15),
+                        Icon(
+                          Icons.person,
+                          color: AppColor.white,
+                        ),
+                        SizedBox(width: 15),
+                        Text(
+                          'John Safwat',
+                          style: TextStyle(
+                            color: AppColor.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 15),
+
+                  Container(
+                    width: double.infinity,
+                    height: 55,
+                    decoration: BoxDecoration(
+                      color: AppColor.gray,
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Row(
+                      children: [
+                        SizedBox(width: 15),
+                        Icon(
+                          Icons.phone,
+                          color: AppColor.white,
+                        ),
+                        SizedBox(width: 15),
+                        Text(
+                          '0120000000',
+                          style: TextStyle(
+                            color: AppColor.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Reset Password',
+                        style: TextStyle(
+                          color: AppColor.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 260),
+
+                  SizedBox(
+                    width: double.infinity,
+                    height: 55,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.splash,
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColor.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                      ),
+                      child: const Text(
+                        'Delete Account',
+                        style: TextStyle(
+                          color: AppColor.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 12),
+
+                  SizedBox(
+                    width: double.infinity,
+                    height: 55,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          showAvatars = true;
+                        });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColor.yellow,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                      ),
+                      child: const Text(
+                        'Update Data',
+                        style: TextStyle(
+                          color: AppColor.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+                ],
               ),
             ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Container(
-                child: TextFormField(
 
-                  style: TextStyle(fontSize: 16, color: AppColor.white),
-                  decoration: InputDecoration(
-                    fillColor: AppColor.gray,
-                    filled: true,
-                    prefixIcon: Icon(Icons.person, color: AppColor.white),
-
-                    hintText: "John Safwat",
-                    hintStyle: TextStyle(color: AppColor.white),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: AppColor.gray),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: AppColor.gray),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: AppColor.gray),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: AppColor.gray),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: AppColor.gray),
-                    ),
+            if (showAvatars)
+              Positioned.fill(
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      showAvatars = false;
+                    });
+                  },
+                  child: Container(
+                    color: Colors.black.withOpacity(0.6),
                   ),
                 ),
               ),
-            ),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Container(
-                child: TextFormField(
-                  style: TextStyle(fontSize: 16, color: AppColor.white),
-                  decoration: InputDecoration(
-                    fillColor: AppColor.gray,
-                    filled: true,
-                    prefixIcon: Icon(Icons.phone, color: AppColor.white),
+            if (showAvatars)
+              Positioned(
+                left: 25,
+                right: 25,
+                bottom: 100,
+                child: Container(
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: AppColor.gray,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        'Pick Avatar',
+                        style: TextStyle(
+                          color: AppColor.yellow,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
 
-                    hintText: "01200000000",
-                    hintStyle: TextStyle(color: AppColor.white),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: AppColor.gray),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: AppColor.gray),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: AppColor.gray),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: AppColor.gray),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: AppColor.gray),
-                    ),
+                      const SizedBox(height: 15),
+
+                      GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: avatars.length,
+                        gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 12,
+                          mainAxisSpacing: 12,
+                          childAspectRatio: 1,
+                        ),
+                        itemBuilder: (context, index) {
+                          final avatar = avatars[index];
+
+                          final bool isSelected =
+                              selectedAvatar == avatar;
+
+                          return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedAvatar = avatar;
+                                showAvatars = false;
+                              });
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                  color: isSelected
+                                      ? AppColor.yellow
+                                      : AppColor.yellow.withOpacity(0.6),
+                                  width: isSelected ? 3 : 1.5,
+                                ),
+                              ),
+                              child: Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(11),
+                                    child: Image.asset(
+                                      avatar,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+
+                                  if (isSelected)
+                                    Positioned.fill(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: AppColor.yellow
+                                              .withOpacity(0.45),
+                                          borderRadius:
+                                          BorderRadius.circular(11),
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  "  Reset Password",
-                  style: TextStyle(
-                    color: AppColor.white,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 310,),
-            FilledButton(
-              onPressed: () {},
-              style: FilledButton.styleFrom(
-                padding: EdgeInsetsGeometry.symmetric(
-                  vertical: 15,
-                  horizontal: 120,
-                ),
-
-                foregroundColor: AppColor.white,
-                backgroundColor: AppColor.red,
-                textStyle: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                  color: AppColor.white,
-                ),
-                shape: RoundedRectangleBorder(
-
-                  borderRadius: BorderRadiusGeometry.circular(16),
-                ),
-              ),
-              child: Text("Delete Account"),
-            ),
-            SizedBox(height: 15,),
-            FilledButton(
-              onPressed: () {},
-              style: FilledButton.styleFrom(
-                padding: EdgeInsetsGeometry.symmetric(
-                  vertical: 15,
-                  horizontal: 130,
-                ),
-                foregroundColor: AppColor.black,
-                backgroundColor: AppColor.yellow,
-                textStyle: TextStyle(
-
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                  color: AppColor.white,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(16),
-                ),
-              ),
-              child: Text("Update Data"),
-            ),
           ],
         ),
       ),
