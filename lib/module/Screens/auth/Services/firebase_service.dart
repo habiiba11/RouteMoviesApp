@@ -16,7 +16,10 @@ class FirebaseService {
         throw 'The password provided is too weak.';
       } else if (e.code == 'email-already-in-use') {
         throw 'The account already exists for that email.';
+      }else{
+        throw e.message??"";
       }
+
     } catch (e) {
       rethrow;
     }

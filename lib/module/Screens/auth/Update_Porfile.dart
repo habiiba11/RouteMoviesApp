@@ -29,7 +29,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       backgroundColor: AppColor.black,
       body: SafeArea(
         child: Stack(
@@ -318,7 +318,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               ),
           ],
         ),
-      ),
-    );
+      );
+
   }
 }

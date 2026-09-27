@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'firebase_options.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,6 +17,14 @@ import 'bloc/watchlist/watchlist_bloc.dart';
 import 'module/Screens/MainNavigation/main_screen.dart';
 import 'repository/movie_repository.dart';
 import 'routes/app_routes.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(const MyApp());
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +49,7 @@ void main() async {
   runApp(MyApp(movieRepository: movieRepository));
 }
 
+
 class MyApp extends StatelessWidget {
   final MovieRepository movieRepository;
 
@@ -47,6 +57,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        fontFamily: GoogleFonts.roboto().fontFamily
+      ),
+      debugShowCheckedModeBanner: false,
+      home:Register(),
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider.value(value: movieRepository),

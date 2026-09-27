@@ -21,6 +21,9 @@ class _LoginState extends State<Login> {
 
   bool isPasswordVisible = false;
 
+class Login extends StatelessWidget {
+ Login({super.key});
+GlobalKey<FormState>Formkey=GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +36,11 @@ class _LoginState extends State<Login> {
           child: ChangeNotifierProvider(
             create: (context) => AuthProvider(),
 
-            child: Column(
+            child: Form(
+           key: Formkey,
+          child: ChangeNotifierProvider(
+            create:(context) => AuthProvider(),
+            child:Column(
               children: [
 
                 SafeArea(
@@ -46,7 +53,18 @@ class _LoginState extends State<Login> {
 
                 // Email
                 Container(
-                  child: TextFormField(
+                  child: TextFormField(validator: (value) {
+                      final bool emailvalid = RegExp(
+                        r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+                      ).hasMatch(value ?? "");
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Enter Email';
+                      } else if (!emailvalid) {
+                        return 'Enter a Valid Email';
+                      } else {
+                        return null;
+                      }
+                    },
                     validator: (value) {
 
                       final bool emailvalid = RegExp(
@@ -297,6 +315,36 @@ class _LoginState extends State<Login> {
 
                 SizedBox(height: 16),
 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don’t Have Account ?  ",
+                      style: TextStyle(
+                        color: AppColor.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      " Create One",
+                      style: TextStyle(
+                        color: AppColor.yellow,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    SizedBox(width: 80,),
+                   Container(
+                        height: 2,
+                     width:80,
+                     color: AppColor.yellow,
+                      ),
                 // Create Account
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
