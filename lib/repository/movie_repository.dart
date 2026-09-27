@@ -23,10 +23,6 @@ class MovieRepository {
     return _apiService.fetchMovies(limit: 15, sortBy: 'download_count', orderBy: 'desc');
   }
 
-  Future<List<Movie>> getTopRatedMovies() async {
-    return _apiService.fetchMovies(limit: 15, sortBy: 'rating', orderBy: 'desc');
-  }
-
   // --- Search Tab Data ---
 
   Future<List<Movie>> searchMovies(String query) async {

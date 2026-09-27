@@ -34,13 +34,13 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Expanded(
               child: Image.asset(
-                'Assets/AppLogo/logo.png',
+                'Asset/AppLogo/logo.png',
                 width: 250,
                 height: 250,
               ),
             ),
             const SizedBox(height: 20),
-            Image.asset('Assets/AppImages/route.png', width: 220, height: 120),
+            Image.asset('Asset/AppImage/route.png', width: 220, height: 120),
           ],
         ),
       ),

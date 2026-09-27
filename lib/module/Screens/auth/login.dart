@@ -145,7 +145,7 @@ class _LoginState extends State<Login> {
                       }
                     },
 
-                    // هنا التحكم في إظهار وإخفاء الباسورد
+
                     obscureText: !isPasswordVisible,
 
                     style: TextStyle(
@@ -163,7 +163,7 @@ class _LoginState extends State<Login> {
                         color: AppColor.white,
                       ),
 
-                      // زر العين
+
                       suffixIcon: IconButton(
                         onPressed: () {
 
