@@ -13,7 +13,7 @@ class OnboardingScreen1 extends StatelessWidget {
           // الصورة تاخد المساحة كلها
           Positioned.fill(
             child: Image.asset(
-              'Assets/AppImage/onboarding.png',
+              'Asset/AppImage/onboarding.png',
               fit: BoxFit.cover,
             ),
           ),

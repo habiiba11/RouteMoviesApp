@@ -9,7 +9,7 @@ class OnboardingScreen5 extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset('Assets/AppImage/onboarding 5.jpg', fit: BoxFit.cover),
+          Image.asset('Asset/AppImage/onboarding 5.jpg', fit: BoxFit.cover),
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(

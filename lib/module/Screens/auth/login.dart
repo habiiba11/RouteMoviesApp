@@ -128,7 +128,6 @@ class _LoginState extends State<Login> {
 
                 SizedBox(height: 16),
 
-                // Password
                 Container(
                   child: TextFormField(
 
@@ -145,7 +144,6 @@ class _LoginState extends State<Login> {
                       }
                     },
 
-                    // هنا التحكم في إظهار وإخفاء الباسورد
                     obscureText: !isPasswordVisible,
 
                     style: TextStyle(
@@ -163,7 +161,7 @@ class _LoginState extends State<Login> {
                         color: AppColor.white,
                       ),
 
-                      // زر العين
+
                       suffixIcon: IconButton(
                         onPressed: () {
 
@@ -273,6 +271,7 @@ class _LoginState extends State<Login> {
                   },
 
                   style: FilledButton.styleFrom(
+
                     padding: EdgeInsets.symmetric(
                       horizontal: 170,
                       vertical: 15,
@@ -292,7 +291,10 @@ class _LoginState extends State<Login> {
                     ),
                   ),
 
-                  child: Text("login"),
+                  child: InkWell(onTap: () {
+                    Navigator.pushReplacementNamed(context, AppRoutes.home);
+                  },
+                      child: Text("login")),
                 ),
 
                 SizedBox(height: 16),
