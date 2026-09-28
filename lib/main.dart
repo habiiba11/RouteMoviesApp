@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'firebase_options.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Core/Asset/Theme/AppColor.dart';
@@ -16,6 +19,12 @@ import 'module/Screens/MainNavigation/main_screen.dart';
 import 'repository/movie_repository.dart';
 import 'routes/app_routes.dart';
 
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MovieAPP());
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -44,6 +53,7 @@ class MyApp extends StatelessWidget {
 
   const MyApp({super.key, required this.movieRepository});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
@@ -87,8 +97,9 @@ class MyApp extends StatelessWidget {
               backgroundColor: AppColor.black,
               elevation: 0,
               iconTheme: IconThemeData(color: Colors.white),
-            ),
-          ),
+        fontFamily: GoogleFonts.roboto().fontFamily
+      ),
+      ),
           onGenerateRoute: AppRoutes.generateRoute,
           initialRoute:AppRoutes.splash ,
         ),
