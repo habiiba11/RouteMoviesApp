@@ -8,6 +8,7 @@ import '../module/Screens/Onboarding/onboarding_screen3.dart';
 import '../module/Screens/Onboarding/onboarding_screen4.dart';
 import '../module/Screens/Onboarding/onboarding_screen5.dart';
 import '../module/Screens/Onboarding/onboarding_screen6.dart';
+import '../module/Screens/Profile/Update_Porfile.dart';
 import '../module/Screens/Splash Screen/splash_screen.dart';
 import 'package:routemovie/module/Screens/MainNavigation/main_screen.dart';
 import 'package:routemovie/module/Screens/auth/Forget%20password.dart';
