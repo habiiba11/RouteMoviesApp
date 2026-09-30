@@ -7,9 +7,18 @@ import 'package:routemovie/Core/Asset/Theme/AppColor.dart';
 import 'package:routemovie/module/Screens/auth/manager/auth%20_Provider.dart';
 
 
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
   Register({super.key});
+
+  @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
   GlobalKey<FormState> formkey = GlobalKey();
+
+  bool isPasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -19,7 +28,10 @@ class Register extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: AppColor.black,
           centerTitle: true,
-          leading: Icon(Icons.arrow_back, color: AppColor.yellow),
+          leading: InkWell(onTap: () {
+            Navigator.pushReplacementNamed(context, AppRoutes.login);
+          },
+              child: Icon(Icons.arrow_back, color: AppColor.yellow)),
           title: Text(
             "Register",
             style: TextStyle(
@@ -298,45 +310,96 @@ class Register extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       child: TextFormField(
+
                         validator: (value) {
+
                           if (value == null || value.isEmpty) {
                             return 'Enter Password';
-                          } else if (value.length < 6) {
+                          }
+                          else if (value.length < 6) {
                             return 'Enter more than Char Or Numbers';
-                          } else {
+                          }
+                          else {
                             return null;
                           }
                         },
-                        style: TextStyle(fontSize: 16, color: AppColor.white),
+
+                        obscureText: !isPasswordVisible,
+
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: AppColor.white,
+                        ),
+
                         decoration: InputDecoration(
+
                           fillColor: AppColor.gray,
                           filled: true,
-                          prefixIcon: Icon(Icons.lock, color: AppColor.white),
-                          suffixIcon: Icon(
-                            Icons.visibility_off,
+
+                          prefixIcon: Icon(
+                            Icons.lock,
                             color: AppColor.white,
                           ),
+
+
+                          suffixIcon: IconButton(
+                            onPressed: () {
+
+                              setState(() {
+                                isPasswordVisible =
+                                !isPasswordVisible;
+                              });
+
+                            },
+
+                            icon: Icon(
+                              isPasswordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+
+                              color: AppColor.white,
+                            ),
+                          ),
+
                           hintText: "Password",
-                          hintStyle: TextStyle(color: AppColor.white),
+
+                          hintStyle: TextStyle(
+                            color: AppColor.white,
+                          ),
+
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: AppColor.gray),
+                            borderSide: BorderSide(
+                              color: AppColor.gray,
+                            ),
                           ),
+
                           errorBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: AppColor.gray),
+                            borderSide: BorderSide(
+                              color: AppColor.gray,
+                            ),
                           ),
+
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: AppColor.gray),
+                            borderSide: BorderSide(
+                              color: AppColor.gray,
+                            ),
                           ),
+
                           focusedErrorBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: AppColor.gray),
+                            borderSide: BorderSide(
+                              color: AppColor.gray,
+                            ),
                           ),
+
                           disabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: AppColor.gray),
+                            borderSide: BorderSide(
+                              color: AppColor.gray,
+                            ),
                           ),
                         ),
                       ),
@@ -346,36 +409,85 @@ class Register extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       child: TextFormField(
-                        style: TextStyle(fontSize: 16, color: AppColor.white),
+
+
+
+                        obscureText: !isPasswordVisible,
+
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: AppColor.white,
+                        ),
+
                         decoration: InputDecoration(
+
                           fillColor: AppColor.gray,
                           filled: true,
-                          prefixIcon: Icon(Icons.lock, color: AppColor.white),
-                          suffixIcon: Icon(
-                            Icons.visibility_off,
+
+                          prefixIcon: Icon(
+                            Icons.lock,
                             color: AppColor.white,
                           ),
-                          hintText: "Confirm Password",
-                          hintStyle: TextStyle(color: AppColor.white),
+
+
+                          suffixIcon: IconButton(
+                            onPressed: () {
+
+                              setState(() {
+                                isPasswordVisible =
+                                !isPasswordVisible;
+                              });
+
+                            },
+
+                            icon: Icon(
+                              isPasswordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+
+                              color: AppColor.white,
+                            ),
+                          ),
+
+                          hintText: " Confirm Password",
+
+                          hintStyle: TextStyle(
+                            color: AppColor.white,
+                          ),
+
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: AppColor.gray),
+                            borderSide: BorderSide(
+                              color: AppColor.gray,
+                            ),
                           ),
+
                           errorBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: AppColor.gray),
+                            borderSide: BorderSide(
+                              color: AppColor.gray,
+                            ),
                           ),
+
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: AppColor.gray),
+                            borderSide: BorderSide(
+                              color: AppColor.gray,
+                            ),
                           ),
+
                           focusedErrorBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: AppColor.gray),
+                            borderSide: BorderSide(
+                              color: AppColor.gray,
+                            ),
                           ),
+
                           disabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: AppColor.gray),
+                            borderSide: BorderSide(
+                              color: AppColor.gray,
+                            ),
                           ),
                         ),
                       ),
@@ -554,7 +666,9 @@ class Register extends StatelessWidget {
                   ),
                   SizedBox(height: 12),
                   FilledButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, AppRoutes.login);
+                    },
                     style: FilledButton.styleFrom(
                       padding: EdgeInsets.symmetric(
                         horizontal: 130,

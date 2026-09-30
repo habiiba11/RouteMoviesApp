@@ -1,4 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:routemovie/module/Screens/auth/Forget%20password.dart';
+import 'package:routemovie/module/Screens/auth/Register.dart';
+import 'package:routemovie/module/Screens/auth/login.dart';
+import '../module/Screens/Onboarding/onboarding_screen1.dart';
+import '../module/Screens/Onboarding/onboarding_screen2.dart';
+import '../module/Screens/Onboarding/onboarding_screen3.dart';
+import '../module/Screens/Onboarding/onboarding_screen4.dart';
+import '../module/Screens/Onboarding/onboarding_screen5.dart';
+import '../module/Screens/Onboarding/onboarding_screen6.dart';
+import '../module/Screens/Splash Screen/splash_screen.dart';
+import 'package:routemovie/module/Screens/MainNavigation/main_screen.dart';
+import 'package:routemovie/module/Screens/auth/Forget%20password.dart';
+import 'package:routemovie/module/Screens/auth/Register.dart';
+import 'package:routemovie/module/Screens/auth/login.dart';
 import '../module/Screens/Onboarding/onboarding_screen1.dart';
 import '../module/Screens/Onboarding/onboarding_screen2.dart';
 import '../module/Screens/Onboarding/onboarding_screen3.dart';
@@ -18,6 +32,15 @@ class AppRoutes {
 
   // static const String home = '/home';
   // static const String login = '/login';
+  static const String login = '/login';
+  static const String register = '/Register';
+  static const String updateProfile = '/Update_Porfile';
+  static const String forgetPassword = '/forgetPassword';
+  static const String main = '/main';
+  static const String home = '/home';
+  static const String search = '/search';
+  static const String browse = '/browse';
+  static const String profile = '/profile';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -26,6 +49,26 @@ class AppRoutes {
 
       case onboarding1:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen1());
+      case onboarding1:
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen1());
+
+      case onboarding2:
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen2());
+
+      case onboarding3:
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen3());
+
+      case onboarding4:
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen4());
+
+      case onboarding5:
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen5());
+
+      case onboarding6:
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen6());
+
+      case login:
+        return MaterialPageRoute(builder: (_) => Login());
 
       case onboarding2:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen2());
