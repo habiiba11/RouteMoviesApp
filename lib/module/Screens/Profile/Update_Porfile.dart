@@ -318,7 +318,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               ),
           ],
         ),
-      );
+      ) );
 
   }
 }

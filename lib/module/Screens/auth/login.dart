@@ -6,7 +6,7 @@ import 'package:routemovie/Core/Asset/AppLogo.dart';
 import 'package:routemovie/routes/app_routes.dart';
 
 import '../../../Core/Asset/Theme/AppColor.dart';
-import 'manager/auth _Provider.dart';
+import 'manager/auth_Provider.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
