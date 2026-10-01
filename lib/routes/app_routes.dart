@@ -3,14 +3,16 @@ import 'package:routemovie/module/Screens/auth/Forget%20password.dart';
 import 'package:routemovie/module/Screens/auth/Register.dart';
 import 'package:routemovie/module/Screens/auth/login.dart';
 import 'package:routemovie/module/Screens/MainNavigation/main_screen.dart';
+import 'package:routemovie/module/Screens/HomeScreen/movie_details_screen.dart';
+
 import '../module/Screens/Onboarding/onboarding_screen1.dart';
 import '../module/Screens/Onboarding/onboarding_screen2.dart';
 import '../module/Screens/Onboarding/onboarding_screen3.dart';
 import '../module/Screens/Onboarding/onboarding_screen4.dart';
 import '../module/Screens/Onboarding/onboarding_screen5.dart';
 import '../module/Screens/Onboarding/onboarding_screen6.dart';
-import '../module/Screens/Splash Screen/splash_screen.dart';
 import '../module/Screens/Profile/Update_Porfile.dart';
+import '../module/Screens/Splash Screen/splash_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -30,6 +32,7 @@ class AppRoutes {
   static const String search = '/search';
   static const String browse = '/browse';
   static const String profile = '/profile';
+  static const String movieDetails = '/movieDetails';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -59,6 +62,7 @@ class AppRoutes {
 
       case register:
         return MaterialPageRoute(builder: (_) => Register());
+
       case updateProfile:
         return MaterialPageRoute(builder: (_) => const UpdateProfileScreen());
 
@@ -69,6 +73,9 @@ class AppRoutes {
       case home:
         return MaterialPageRoute(builder: (_) => const MainScreen());
 
+      case movieDetails:
+        final id = settings.arguments as int? ?? 10;
+        return MaterialPageRoute(builder: (_) => MovieDetailsScreen(movieId: id));
       default:
         return MaterialPageRoute(
           builder: (_) =>

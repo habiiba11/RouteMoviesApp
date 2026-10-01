@@ -1,688 +1,354 @@
-
- import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:routemovie/Core/Asset/AppImage.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:routemovie/Core/Asset/AppLogo.dart';
 import 'package:routemovie/Core/Asset/Theme/AppColor.dart';
 import 'package:routemovie/models/movie.dart';
-import 'package:routemovie/routes/app_routes.dart';
+import 'package:routemovie/models/movie_details.dart';
+import 'package:routemovie/movie_api.dart';
 
-class MovieDetails extends StatelessWidget {
-const MovieDetails({super.key, required Movie movie});
-
-@override
-Widget build(BuildContext context) {
-return Scaffold(
-extendBodyBehindAppBar: true,
-backgroundColor: Colors.black,
-
-appBar: AppBar(
-backgroundColor: Colors.transparent,
-
-leading: InkWell(
-onTap: () {
-Navigator.pushReplacementNamed(context, AppRoutes.login);
-},
-child: Icon(Icons.arrow_back_ios, color: AppColor.white),
-),
-
-actions: [
-SvgPicture.asset("Asset/Svg/saved.svg", color: AppColor.white),
-SizedBox(width: 16),
-],
-),
-
-body: SingleChildScrollView(
-child: Column(
-children: [
-Stack(
-children: [
-Image.asset(
-"Asset/AppImage/onboarding5.jpg",
-width: double.infinity,
-height: 720,
-fit: BoxFit.cover,
-),
-
-Container(
-width: double.infinity,
-height: 720,
-
-decoration: BoxDecoration(
-gradient: LinearGradient(
-begin: Alignment.topCenter,
-end: Alignment.bottomCenter,
-colors: [
-Color(0xff121312).withValues(alpha: 0.2),
-Color(0xff121312),
-],
-),
-),
-
-child: Column(
-children: [
-SizedBox(height: 171),
-
-Image.asset(Applogo.video_logo, width: 97, height: 97),
-
-SizedBox(height: 188),
-
-Padding(
-padding: EdgeInsets.symmetric(horizontal: 28),
-child: Text(
-"Doctor Strange in the Multiverse\n"
-"of Madness",
-textAlign: TextAlign.center,
-style: TextStyle(
-fontSize: 24,
-fontWeight: FontWeight.w700,
-color: AppColor.white,
-),
-),
-),
-
-SizedBox(height: 15),
-
-Text(
-"2022",
-style: TextStyle(
-fontWeight: FontWeight.w700,
-fontSize: 20,
-color: AppColor.white,
-),
-),
-
-SizedBox(height: 8),
-FilledButton(
-onPressed: () {},
-
-style: FilledButton.styleFrom(
-backgroundColor: AppColor.red,
-padding: EdgeInsetsGeometry.symmetric(
-horizontal: 120,
-vertical: 16,
-),
-
-shape: RoundedRectangleBorder(
-borderRadius: BorderRadius.circular(16),
-),
-),
-
-child: Text(
-"Watch",
-style: TextStyle(
-fontWeight: FontWeight.w700,
-fontSize: 20,
-color: AppColor.white,
-),
-),
-),
- Padding(
-padding: const EdgeInsets.symmetric(
-horizontal: 16,
-vertical: 16,
-),
-child: Row(
-children: [
-Expanded(
-child: FilledButton.icon(
-onPressed: () {},
-icon: SvgPicture.asset(
-'Asset/Svg/heart.svg',
-),
-label: Text(
-"15",
-style: TextStyle(
-color: AppColor.white,
-),
-),
-style: FilledButton.styleFrom(
-backgroundColor: AppColor.gray,
-shape: RoundedRectangleBorder(
-borderRadius: BorderRadius.circular(16),
-),
-),
-),
-),
-
-SizedBox(width: 16),
-
-Expanded(
-child: FilledButton.icon(
-onPressed: () {},
-icon: SvgPicture.asset(
-'Asset/Svg/clock.svg',
-),
-label: Text(
-"90",
-style: TextStyle(
-color: AppColor.white,
-),
-),
-style: FilledButton.styleFrom(
-backgroundColor: AppColor.gray,
-shape: RoundedRectangleBorder(
-borderRadius: BorderRadius.circular(16),
-),
-),
-),
-),
-
-SizedBox(width: 16),
-
-Expanded(
-child: FilledButton.icon(
-onPressed: () {},
-icon: SvgPicture.asset(
-'Asset/Svg/star.svg',
-),
-label: Text(
-"7.6",
-style: TextStyle(
-color: AppColor.white,
-),
-),
-style: FilledButton.styleFrom(
-backgroundColor: AppColor.gray,
-shape: RoundedRectangleBorder(
-borderRadius: BorderRadius.circular(16),
-),
-),
-),
-),
-],
-),
-),
-],
-),
-),
-],
-),
-
-Container(
-width: double.infinity,
-color: Colors.black,
-
-child: Column(
-children: [
-Align(
-alignment: Alignment.centerLeft,
-
-child: Padding(
-padding: EdgeInsets.symmetric(horizontal: 16),
-
-child: Text(
- "Screen Shots",
-style: TextStyle(
-color: AppColor.white,
-fontSize: 24,
-fontWeight: FontWeight.w700,
-),
-),
-),
-),
-
-SizedBox(height: 16),
-
-Image.asset(AppImage.movieDetails1),
-
-SizedBox(height: 14),
-
-Image.asset(AppImage.movieDetails2),
-
-SizedBox(height: 14),
-
-Image.asset(AppImage.movieDetails3),
-],
-),
-),
-
-Container(
-child: Column(
-children: [
-Align(
-alignment: Alignment.centerLeft,
-
-child: Padding(
-padding: EdgeInsets.symmetric(
-horizontal: 16,
-vertical: 35,
-),
-
-child: Text(
-"Similar ",
-style: TextStyle(
-color: AppColor.white,
-fontSize: 24,
-fontWeight: FontWeight.w700,
-),
-),
-),
-),
-Row(
-children: [
-SizedBox(width: 8),
-Container(
-height: 279,
-width: 189,
-child: Image.asset(AppImage.film1),
-decoration: BoxDecoration(
-borderRadius: BorderRadiusGeometry.circular(16),
-),
-),
-SizedBox(width: 20),
-Container(
-height: 279,
-width: 189,
-child: Image.asset(AppImage.film2),
-decoration: BoxDecoration(
-borderRadius: BorderRadiusGeometry.circular(16),
-),
-),
-],
-),
-SizedBox(height: 16),
-Row(
-children: [
-SizedBox(width: 8),
-Container(
-height: 279,
-width: 189,
-child: Image.asset(AppImage.film3),
-decoration: BoxDecoration(
-borderRadius: BorderRadiusGeometry.circular(16),
-),
-),
-SizedBox(width: 20),
-Container(
-height: 279,
-width: 189,
-child: Image.asset(AppImage.film4),
-decoration: BoxDecoration(
-borderRadius: BorderRadiusGeometry.circular(16),
-),
-),
-],
-),
-SizedBox(height: 16),
-Padding(
-padding: const EdgeInsets.symmetric(
-vertical: 20,
-horizontal: 16,
-),
-child: Align(
-alignment: AlignmentGeometry.centerLeft,
-child: Text(
-"Summary",
-style: TextStyle(
-color: AppColor.white,
-fontSize: 24,
-fontWeight: FontWeight.w700,
-),
-),
-),
- ),
-Padding(
-padding: const EdgeInsets.all(8.0),
-child: Text(
-"Following the events of Spider-Man No Way Home, Doctor Strange unwittingly casts a forbidden spell that accidentally opens up the multiverse. With help from Wong and Scarlet Witch, Strange confronts various versions of himself as well as teaming up with the young America Chavez while traveling through various realities and working to restore reality as he knows it. Along the way, Strange and his allies realize they must take on a powerful new adversary who seeks to take over the multiverse.—Blazer346",
-style: TextStyle(
-fontWeight: FontWeight.w700,
-fontSize: 16,
-color: AppColor.white,
-),
-),
-),
-SizedBox(height: 16),
-Container(
-padding: EdgeInsetsGeometry.symmetric(
-vertical: 20,
-horizontal: 16,
-),
-alignment: AlignmentGeometry.centerLeft,
-child: Text(
-"Cast",
-style: TextStyle(
-color: AppColor.white,
-fontSize: 24,
-fontWeight: FontWeight.w700,
-),
-),
-),
-Container(
-height: 92,
-width: 398,
-decoration: BoxDecoration(
-color: AppColor.gray,
-borderRadius: BorderRadius.circular(16),
-),
-child: Row(
-children: [
-SizedBox(width: 11),
-ClipRRect(
-borderRadius: BorderRadius.circular(16),
-child: Image.asset(
-AppImage.actor1,
-height: 70,
-width: 70,
-fit: BoxFit.cover,
-),
-),
-
-SizedBox(width: 16),
-
-Column(
-mainAxisAlignment: MainAxisAlignment.center,
-crossAxisAlignment: CrossAxisAlignment.start,
-children: [
-Text(
-"Name : Hayley Atwell",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-
-SizedBox(height: 8),
-
-Text(
-"Character : Captain Carter",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-],
-),
-],
-),
-),
-SizedBox(height: 8),
-Container(
-height: 92,
-width: 398,
-decoration: BoxDecoration(
-color: AppColor.gray,
-borderRadius: BorderRadius.circular(16),
-),
-child: Row(
-children: [
- SizedBox(width: 11),
-ClipRRect(
-borderRadius: BorderRadius.circular(16),
-child: Image.asset(
-AppImage.actor2,
-height: 70,
-width: 70,
-fit: BoxFit.cover,
-),
-),
-
-SizedBox(width: 16),
-
-Column(
-mainAxisAlignment: MainAxisAlignment.center,
-crossAxisAlignment: CrossAxisAlignment.start,
-children: [
-Text(
-"Name : Elizabeth Olsen",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-
-SizedBox(height: 8),
-
-Text(
-"Character : Wanda Maximoff /\n The Scarlet Witch",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-],
-),
-],
-),
-),
-SizedBox(height: 8),
-Container(
-height: 92,
-width: 398,
-decoration: BoxDecoration(
-color: AppColor.gray,
-borderRadius: BorderRadius.circular(16),
-),
-child: Row(
-children: [
-SizedBox(width: 11),
-ClipRRect(
-borderRadius: BorderRadius.circular(16),
-child: Image.asset(
-AppImage.actor3,
-height: 70,
-width: 70,
-fit: BoxFit.cover,
-),
-),
-
-SizedBox(width: 16),
-
-Column(
-mainAxisAlignment: MainAxisAlignment.center,
-crossAxisAlignment: CrossAxisAlignment.start,
-children: [
-Text(
-"Name : Rachel McAdams",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-
-SizedBox(height: 8),
-
-Text(
-"Character : Dr. Christine Palmer",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-],
-),
-],
-),
-),
-SizedBox(height: 8),
-Container(
-height: 92,
-width: 398,
-decoration: BoxDecoration(
-color: AppColor.gray,
- borderRadius: BorderRadius.circular(16),
-),
-child: Row(
-children: [
-SizedBox(width: 11),
-ClipRRect(
-borderRadius: BorderRadius.circular(16),
-child: Image.asset(
-AppImage.actor4,
-height: 70,
-width: 70,
-fit: BoxFit.cover,
-),
-),
-
-SizedBox(width: 16),
-
-Column(
-mainAxisAlignment: MainAxisAlignment.center,
-crossAxisAlignment: CrossAxisAlignment.start,
-children: [
-Text(
-"Name : Charlize Theron",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-
-SizedBox(height: 8),
-
-Text(
-"Character : Clea",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-],
-),
-],
-),
-),
-],
-),
-),
-SizedBox(height: 16),
-
-Column(
-crossAxisAlignment: CrossAxisAlignment.start,
-children: [
-Text(
-"Genres",
-style: TextStyle(
-fontSize: 24,
-fontWeight: FontWeight.w700,
-color: AppColor.white,
-),
-),
-
-SizedBox(height: 16),
-
-Row(
-children: [
-Container(
-height: 36,
-width: 122,
-alignment: Alignment.center,
-decoration: BoxDecoration(
-color: AppColor.gray,
-borderRadius: BorderRadius.circular(16),
-),
-child: Text(
-"Action",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-),
-
-SizedBox(width: 16),
-
-Container(
-height: 36,
-width: 122,
-alignment: Alignment.center,
-decoration: BoxDecoration(
-color: AppColor.gray,
-borderRadius: BorderRadius.circular(16),
-),
-child: Text(
-"Sci-Fi",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-),
-
-SizedBox(width: 16),
-
-Container(
-height: 36,
-width: 122,
-alignment: Alignment.center,
- decoration: BoxDecoration(
-color: AppColor.gray,
-borderRadius: BorderRadius.circular(16),
-),
-child: Text(
-"Adventure",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-),
-],
-),
-
-SizedBox(height: 12),
-
-Row(
-children: [
-Container(
-height: 36,
-width: 122,
-alignment: Alignment.center,
-decoration: BoxDecoration(
-color: AppColor.gray,
-borderRadius: BorderRadius.circular(16),
-),
-child: Text(
-"Fantasy",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-),
-
-SizedBox(width: 16),
-
-Container(
-height: 36,
-width: 122,
-alignment: Alignment.center,
-decoration: BoxDecoration(
-color: AppColor.gray,
-borderRadius: BorderRadius.circular(16),
-),
-child: Text(
-"Horror",
-style: TextStyle(
-color: AppColor.white,
-fontWeight: FontWeight.w700,
-fontSize: 16,
-),
-),
-),
-],
-),
-SizedBox(height: 57,)
-],
-),
-],
-),
-),
+TextStyle _bold(double size) => TextStyle(
+  color: AppColor.white,
+  fontSize: size,
+  fontWeight: FontWeight.w700,
 );
+
+class MovieDetailsScreen extends StatefulWidget {
+  const MovieDetailsScreen({super.key, this.movieId = 10});
+
+  final int movieId;
+
+  @override
+  State<MovieDetailsScreen> createState() => _MovieDetailsScreenState();
 }
+
+class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
+  late final Future<List<Object>> _future = Future.wait<Object>([
+    MovieApi.details(widget.movieId),
+    MovieApi.suggestions(widget.movieId),
+  ]);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: InkWell(
+          onTap: () => Navigator.pop(context),
+          child: Icon(Icons.arrow_back_ios, color: AppColor.white),
+        ),
+        actions: [
+          SvgPicture.asset(
+            "Asset/Svg/saved.svg",
+            colorFilter: ColorFilter.mode(AppColor.white, BlendMode.srcIn),
+          ),
+          const SizedBox(width: 16),
+        ],
+      ),
+      body: FutureBuilder<List<Object>>(
+        future: _future,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState != ConnectionState.done) {
+            return Center(child: CircularProgressIndicator(color: AppColor.red));
+          }
+          if (snapshot.hasError) {
+            debugPrint('MOVIE ERROR: ${snapshot.error}');
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Text('${snapshot.error}', style: _bold(14), textAlign: TextAlign.center),
+              ),
+            );
+          }
+          return _Content(
+            details: snapshot.data![0] as MovieDetails,
+            similar: snapshot.data![1] as List<Movie>,
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _Content extends StatelessWidget {
+  const _Content({required this.details, required this.similar});
+
+  final MovieDetails details;
+  final List<Movie> similar;
+
+  @override
+  Widget build(BuildContext context) {
+    final movie = details.movie;
+
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _Hero(details: details),
+          if (details.screenshots.isNotEmpty)
+            _Section(
+              title: "Screen Shots",
+              child: Column(
+                children: [
+                  for (final url in details.screenshots)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.network(url, width: double.infinity),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          if (similar.isNotEmpty)
+            _Section(
+              title: "Similar",
+              child: GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                childAspectRatio: 189 / 279,
+                children: [
+                  for (final m in similar.take(4))
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => MovieDetailsScreen(movieId: m.id),
+                        ),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.network(
+                          m.posterUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          _Section(
+            title: "Summary",
+            child: Text(movie.descriptionFull, style: _bold(16)),
+          ),
+          if (details.cast.isNotEmpty)
+            _Section(
+              title: "Cast",
+              child: Column(
+                children: [for (final c in details.cast) _CastCard(actor: c)],
+              ),
+            ),
+          if (movie.genres.isNotEmpty)
+            _Section(
+              title: "Genres",
+              child: Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                children: [
+                  for (final g in movie.genres) _GenreChip(label: g),
+                ],
+              ),
+            ),
+          const SizedBox(height: 40),
+        ],
+      ),
+    );
+  }
+}
+
+class _Hero extends StatelessWidget {
+  const _Hero({required this.details});
+
+  final MovieDetails details;
+
+  @override
+  Widget build(BuildContext context) {
+    final movie = details.movie;
+
+    return SizedBox(
+      height: 720,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.network(movie.backgroundImage, fit: BoxFit.cover),
+          DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  const Color(0xff121312).withValues(alpha: 0.2),
+                  const Color(0xff121312),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, kToolbarHeight, 16, 0),
+            child: Column(
+              children: [
+                const Spacer(),
+                Image.asset(Applogo.video_logo, width: 97, height: 97),
+                const Spacer(),
+                Text(movie.title, textAlign: TextAlign.center, style: _bold(24)),
+                const SizedBox(height: 16),
+                Text('${movie.year}', style: _bold(20)),
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: details.trailerCode.isEmpty
+                        ? null
+                        : () => launchUrl(
+                      Uri.parse(
+                          'https://www.youtube.com/watch?v=${details.trailerCode}'),
+                      mode: LaunchMode.externalApplication,
+                    ),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: AppColor.red,
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    child: Text("Watch", style: _bold(20)),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    _StatButton(icon: 'heart', value: '${details.likeCount}'),
+                    const SizedBox(width: 16),
+                    _StatButton(icon: 'clock', value: '${movie.runtime}'),
+                    const SizedBox(width: 16),
+                    _StatButton(icon: 'star', value: '${movie.rating}'),
+                  ],
+                ),
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _StatButton extends StatelessWidget {
+  const _StatButton({required this.icon, required this.value});
+
+  final String icon;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: FilledButton.icon(
+        onPressed: () {},
+        icon: SvgPicture.asset('Asset/Svg/$icon.svg'),
+        label: Text(value, style: TextStyle(color: AppColor.white)),
+        style: FilledButton.styleFrom(
+          backgroundColor: AppColor.gray,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _Section extends StatelessWidget {
+  const _Section({required this.title, required this.child});
+
+  final String title;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title, style: _bold(24)),
+          const SizedBox(height: 16),
+          child,
+        ],
+      ),
+    );
+  }
+}
+
+class _CastCard extends StatelessWidget {
+  const _CastCard({required this.actor});
+
+  final CastMember actor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.all(11),
+      decoration: BoxDecoration(
+        color: AppColor.gray,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.network(
+              actor.profilePhoto,
+              height: 70,
+              width: 70,
+              fit: BoxFit.cover,
+              errorBuilder: (_, __, ___) => Container(
+                height: 70,
+                width: 70,
+                color: Colors.black26,
+                child: Icon(Icons.person, color: AppColor.white),
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Name : ${actor.name}", style: _bold(16)),
+                const SizedBox(height: 8),
+                Text("Character : ${actor.characterName}", style: _bold(16)),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _GenreChip extends StatelessWidget {
+  const _GenreChip({required this.label});
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      decoration: BoxDecoration(
+        color: AppColor.gray,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Text(label, style: _bold(16)),
+    );
+  }
 }

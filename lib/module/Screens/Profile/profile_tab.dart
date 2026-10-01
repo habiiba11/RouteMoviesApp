@@ -10,6 +10,8 @@ import '../../../bloc/watchlist/watchlist_bloc.dart';
 import '../../../bloc/watchlist/watchlist_event.dart';
 import '../../../bloc/watchlist/watchlist_state.dart';
 import '../../../models/movie.dart';
+import 'package:routemovie/routes/app_routes.dart';
+
 import '../HomeScreen/movie_details_screen.dart';
 import '../widgets/responsive_movie_grid.dart';
 
@@ -34,7 +36,7 @@ class _ProfileTabState extends State<ProfileTab> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => MovieDetails(movie: movie),
+        builder: (_) => MovieDetailsScreen(movieId: movie.id),
       ),
     );
   }
@@ -125,7 +127,7 @@ class _ProfileTabState extends State<ProfileTab> {
                           height: 44,
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, '/Update_Porfile');
+                              Navigator.pushNamed(context, AppRoutes.updateProfile);
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColor.yellow,

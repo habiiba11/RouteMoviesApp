@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:routemovie/Core/Asset/AppLogo.dart';
 import 'package:routemovie/routes/app_routes.dart';
-
+import '../auth/Services/auth_service.dart';
 import '../../../Core/Asset/Theme/AppColor.dart';
 import 'manager/auth_Provider.dart';
 
@@ -18,6 +18,20 @@ class _LoginState extends State<Login> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool isPasswordVisible = false;
   bool isSelected = false;
+
+  Future<void> _googleSignIn() async {
+    try {
+      final cred = await AuthService.signInWithGoogle();
+      if (cred != null && mounted) {
+        Navigator.pushReplacementNamed(context, AppRoutes.main);
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('$e')));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -247,9 +261,7 @@ class _LoginState extends State<Login> {
                         width: double.infinity,
                         height: 52,
                         child: FilledButton.icon(
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(context, AppRoutes.main);
-                          },
+                          onPressed: _googleSignIn,
                           icon: SvgPicture.asset("Asset/Svg/google_.svg", width: 22, height: 22),
                           label: const Text(
                             "Login With Google",

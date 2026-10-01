@@ -45,7 +45,7 @@ class _HomeTabState extends State<HomeTab> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => MovieDetails(movie: movie),
+        builder: (_) => MovieDetailsScreen(movieId: movie.id),
       ),
     );
   }

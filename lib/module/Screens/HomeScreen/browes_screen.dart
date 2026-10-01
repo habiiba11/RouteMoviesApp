@@ -30,7 +30,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => MovieDetails(movie: movie),
+        builder: (_) => MovieDetailsScreen(movieId: movie.id),
       ),
     );
   }
