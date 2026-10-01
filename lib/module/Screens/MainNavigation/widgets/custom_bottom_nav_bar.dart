@@ -14,30 +14,30 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-      height: 62,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      height: 58,
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1E1E),
-        borderRadius: BorderRadius.circular(32),
+        color: const Color(0xFF282A28),
+        borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.45),
+            color: Colors.black.withValues(alpha: 0.5),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
         ],
         border: Border.all(
-          color: Colors.white.withOpacity(0.08),
+          color: Colors.white.withValues(alpha: 0.08),
           width: 1,
         ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildNavItem(index: 0, icon: Icons.home_rounded, label: 'Home'),
-          _buildNavItem(index: 1, icon: Icons.search_rounded, label: 'Search'),
-          _buildNavItem(index: 2, icon: Icons.explore_rounded, label: 'Browse'),
-          _buildNavItem(index: 3, icon: Icons.person_rounded, label: 'Profile'),
+          _buildNavItem(index: 0, icon: Icons.home_filled, label: 'Home'),
+          _buildNavItem(index: 1, icon: Icons.search, label: 'Search'),
+          _buildNavItem(index: 2, icon: Icons.explore_outlined, label: 'Browse'),
+          _buildNavItem(index: 3, icon: Icons.person, label: 'Profile'),
         ],
       ),
     );
@@ -53,28 +53,15 @@ class CustomBottomNavBar extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () => onTap(index),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.easeInOut,
-        width: 46,
-        height: 46,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: isSelected ? AppColor.yellow : Colors.transparent,
-          boxShadow: isSelected
-              ? [
-                  BoxShadow(
-                    color: AppColor.yellow.withOpacity(0.35),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ]
-              : null,
-        ),
-        child: Icon(
-          icon,
-          color: isSelected ? Colors.black : Colors.white60,
-          size: 24,
+      child: SizedBox(
+        width: 54,
+        height: 54,
+        child: Center(
+          child: Icon(
+            icon,
+            color: isSelected ? AppColor.yellow : Colors.white,
+            size: 26,
+          ),
         ),
       ),
     );

@@ -24,9 +24,9 @@ class SectionHeader extends StatelessWidget {
             title,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 18,
+              fontSize: 19,
               fontWeight: FontWeight.bold,
-              letterSpacing: 0.5,
+              letterSpacing: 0.3,
             ),
           ),
           if (showSeeMore)
@@ -39,12 +39,12 @@ class SectionHeader extends StatelessWidget {
                     'See More',
                     style: TextStyle(
                       color: AppColor.yellow,
-                      fontSize: 13,
+                      fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   SizedBox(width: 4),
-                  Icon(Icons.arrow_forward_ios, color: AppColor.yellow, size: 12),
+                  Icon(Icons.arrow_forward, color: AppColor.yellow, size: 14),
                 ],
               ),
             ),

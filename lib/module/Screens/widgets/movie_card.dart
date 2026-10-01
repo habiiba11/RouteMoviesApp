@@ -8,6 +8,7 @@ class MovieCard extends StatelessWidget {
   final double? width;
   final double? height;
   final bool showRating;
+  final bool showTitle;
 
   const MovieCard({
     super.key,
@@ -16,6 +17,7 @@ class MovieCard extends StatelessWidget {
     this.width,
     this.height,
     this.showRating = true,
+    this.showTitle = false,
   });
 
   @override
@@ -26,13 +28,13 @@ class MovieCard extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(14),
           color: AppColor.gray,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
-              blurRadius: 6,
-              offset: const Offset(0, 3),
+              color: Colors.black.withValues(alpha: 0.35),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
@@ -43,43 +45,41 @@ class MovieCard extends StatelessWidget {
             // Poster Image
             _buildPosterImage(),
 
-            // Gradient overlay at bottom
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0,
-              height: 60,
-              child: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    colors: [
-                      Colors.black87,
-                      Colors.transparent,
-                    ],
+            // Gradient overlay at bottom (only if showTitle is true)
+            if (showTitle)
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: 60,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [
+                        Colors.black87,
+                        Colors.transparent,
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
 
-            // Rating Badge (Top Left)
+            // Rating Badge (Top Left): "7.7 ★"
             if (showRating && movie.rating > 0)
               Positioned(
                 top: 8,
                 left: 8,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                  padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.75),
+                    color: const Color(0xB3121312),
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: AppColor.yellow.withOpacity(0.4), width: 0.5),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.star_rounded, color: AppColor.yellow, size: 14),
-                      const SizedBox(width: 3),
                       Text(
                         movie.rating.toStringAsFixed(1),
                         style: const TextStyle(
@@ -88,27 +88,30 @@ class MovieCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      const SizedBox(width: 3),
+                      const Icon(Icons.star, color: AppColor.yellow, size: 12),
                     ],
                   ),
                 ),
               ),
 
-            // Title & Year (Bottom)
-            Positioned(
-              left: 8,
-              right: 8,
-              bottom: 6,
-              child: Text(
-                movie.title,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
+            // Title & Year (Bottom) - only if showTitle is true
+            if (showTitle)
+              Positioned(
+                left: 8,
+                right: 8,
+                bottom: 6,
+                child: Text(
+                  movie.title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
-            ),
           ],
         ),
       ),
@@ -124,7 +127,7 @@ class MovieCard extends StatelessWidget {
       return Image.network(
         url,
         fit: BoxFit.cover,
-        errorBuilder: (_, __, ___) => _buildPlaceholder(),
+        errorBuilder: (_, _, _) => _buildPlaceholder(),
         loadingBuilder: (context, child, progress) {
           if (progress == null) return child;
           return Center(
@@ -133,7 +136,7 @@ class MovieCard extends StatelessWidget {
               height: 24,
               child: CircularProgressIndicator(
                 strokeWidth: 2,
-                color: AppColor.yellow.withOpacity(0.7),
+                color: AppColor.yellow.withValues(alpha: 0.7),
               ),
             ),
           );
@@ -143,7 +146,7 @@ class MovieCard extends StatelessWidget {
       return Image.asset(
         url,
         fit: BoxFit.cover,
-        errorBuilder: (_, __, ___) => _buildPlaceholder(),
+        errorBuilder: (_, _, _) => _buildPlaceholder(),
       );
     }
     return _buildPlaceholder();

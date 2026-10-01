@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -249,9 +248,12 @@ class _RegisterState extends State<Register> {
 
                     const SizedBox(height: 12),
                     FilledButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (formkey.currentState!.validate()) {
-                          authProvider.createAccount();
+                          await authProvider.createAccount();
+                          if (context.mounted) {
+                            Navigator.pushReplacementNamed(context, AppRoutes.main);
+                          }
                         }
                       },
                       style: FilledButton.styleFrom(

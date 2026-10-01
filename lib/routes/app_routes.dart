@@ -10,6 +10,7 @@ import '../module/Screens/Onboarding/onboarding_screen4.dart';
 import '../module/Screens/Onboarding/onboarding_screen5.dart';
 import '../module/Screens/Onboarding/onboarding_screen6.dart';
 import '../module/Screens/Splash Screen/splash_screen.dart';
+import '../module/Screens/Profile/Update_Porfile.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -22,7 +23,7 @@ class AppRoutes {
 
   static const String login = '/login';
   static const String register = '/Register';
-  static const String updateProfile = '/Update_Porfile';
+  static const String updateProfile = '/Update_Profile';
   static const String forgetPassword = '/forgetPassword';
   static const String main = '/main';
   static const String home = '/home';
@@ -54,10 +55,12 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const OnboardingScreen6());
 
       case login:
-        return MaterialPageRoute(builder: (_) => const Login());
+        return MaterialPageRoute(builder: (_) => Login());
 
       case register:
         return MaterialPageRoute(builder: (_) => Register());
+      case updateProfile:
+        return MaterialPageRoute(builder: (_) => const UpdateProfileScreen());
 
       case forgetPassword:
         return MaterialPageRoute(builder: (_) => Forgetpassword());

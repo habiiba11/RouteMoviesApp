@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../models/movie.dart';
 import '../../repository/movie_repository.dart';
 import 'browse_event.dart';
 import 'browse_state.dart';

@@ -34,7 +34,7 @@ class _ProfileTabState extends State<ProfileTab> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => MovieDetailsScreen(movie: movie),
+        builder: (_) => MovieDetails(movie: movie),
       ),
     );
   }
